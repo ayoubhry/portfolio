@@ -317,3 +317,66 @@
   onScroll();
 })();
 
+(function initAudio() {
+  const audio = document.getElementById('bgMusic');
+  const btn = document.getElementById('audioControl');
+  const icon = document.getElementById('audioIcon');
+  let played = false;
+
+  const playAudio = () => {
+    if (!played) {
+      audio.play().then(() => {
+        played = true;
+        icon.className = 'fa-solid fa-volume-high';
+      }).catch(e => console.log("Lecture auto bloquée par le navigateur"));
+    }
+  };
+
+  // Lance la musique dès le premier clic n'importe où sur la page
+  document.addEventListener('click', playAudio, { once: true });
+
+  // Gère le bouton mute/unmute
+  btn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  if (audio.paused) {
+    audio.play();
+    icon.className = 'fa-solid fa-volume-high';
+  } else {
+    audio.pause();
+    icon.className = 'fa-solid fa-volume-xmark';
+  }
+});
+
+const assistant = document.getElementById('assistant');
+const mouth = document.getElementById('mouth');
+const bubble = document.getElementById('speechBubble');
+
+function parler(texte) {
+    const utterance = new SpeechSynthesisUtterance(texte);
+    utterance.lang = 'fr-FR';
+
+    utterance.onstart = () => {
+        assistant.classList.add('is-talking');
+        bubble.textContent = texte; // Affiche le texte
+        bubble.classList.remove('hidden'); // Affiche la bulle
+    };
+
+    utterance.onend = () => {
+        assistant.classList.remove('is-talking');
+        bubble.classList.add('hidden'); // Cache la bulle une fois fini
+    };
+
+    window.speechSynthesis.speak(utterance);
+}
+
+// Déclencheur au clic
+assistant.addEventListener('click', () => {
+    // Animation de saut
+    assistant.classList.add('active');
+    setTimeout(() => assistant.classList.remove('active'), 500);
+
+    // Faire parler le personnage
+    parler("Bonjour ! Je suis là pour t'aider à naviguer sur ce portfolio.");
+});
+
+})();
