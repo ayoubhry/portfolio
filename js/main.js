@@ -261,6 +261,7 @@
 })();
 
 
+
 /* ─────────────────────────────────────────────────────────────
    8. PROJECT CARDS — Staggered entry delay
 ───────────────────────────────────────────────────────────── */
@@ -272,3 +273,47 @@
     }
   });
 })();
+
+/* ─────────────────────────────────────────────────────────────
+   9. THEME TOGGLE (Clair / Sombre)
+───────────────────────────────────────────────────────────── */
+(function initThemeToggle() {
+  const html      = document.documentElement;
+  const toggles   = [
+    document.getElementById('themeToggle'),
+    document.getElementById('themeToggleMobile'),
+  ].filter(Boolean);
+
+  // Restore saved preference
+  const saved = localStorage.getItem('theme');
+  if (saved) html.setAttribute('data-theme', saved);
+
+  function setTheme(theme) {
+    html.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }
+
+  toggles.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme') || 'light';
+      setTheme(current === 'light' ? 'dark' : 'light');
+    });
+  });
+})();
+
+
+/* ─────────────────────────────────────────────────────────────
+   10. SOCIAL SIDEBAR — Apparition au scroll
+───────────────────────────────────────────────────────────── */
+(function initSocialSidebar() {
+  const sidebar = document.getElementById('socialSidebar');
+  if (!sidebar) return;
+
+  function onScroll() {
+    sidebar.classList.toggle('visible', window.scrollY > 200);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
