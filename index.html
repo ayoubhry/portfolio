@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio d'Ayoub Houraoui – BTS SIO SISR, Infrastructure, Réseaux & Cybersécurité. Caen." />
+  <title>Ayoub Houraoui · BTS SIO SISR</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,600;12..96,700;12..96,800&family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;1,6..12,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header id="navbar">
+    <nav class="nav container">
+      <a href="#hero" class="nav__logo">Ayoub<span>.</span></a>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#about"          class="nav__link">À propos</a></li>
+        <li><a href="#stack"          class="nav__link">Stack</a></li>
+        <li><a href="#projects"       class="nav__link">Projets</a></li>
+        <li><a href="#certifications" class="nav__link">Certifications</a></li>
+        <li><a href="#contact"        class="nav__link">Contact</a></li>
+        <li>
+          <button class="theme-toggle" id="themeToggle" aria-label="Changer le thème">
+            <i class="fa-solid fa-sun"  id="iconSun"></i>
+            <i class="fa-solid fa-moon" id="iconMoon"></i>
+          </button>
+        </li>
+        <li>
+          <a href="assets/cv/CV_Houraoui.pdf" download class="btn btn--sm btn--primary">
+            <i class="fa-solid fa-download"></i> CV
+          </a>
+        </li>
+      </ul>
+      <div class="nav__right-mobile">
+        <button class="theme-toggle" id="themeToggleMobile" aria-label="Changer le thème">
+          <i class="fa-solid fa-sun"  ></i>
+          <i class="fa-solid fa-moon" ></i>
+        </button>
+        <button class="nav__burger" id="burgerBtn" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ══ HERO ══════════════════════════════════════════════ -->
+    <section id="hero">
+      <div class="hero__bg-grid"></div>
+      <div class="container hero__inner">
+        <div class="hero__content" data-animate>
+          <div class="hero__badge">
+            <span class="hero__badge-dot"></span>
+            Recherche de stage · SISR
+          </div>
+          <h1 class="hero__title">
+            Infrastructure,<br />
+            <em>Réseaux</em> &amp;<br />
+            Cybersécurité.
+          </h1>
+          <p class="hero__desc">
+            Étudiant en <strong>BTS SIO option SISR</strong> au lycée Jean Rostand à Caen.
+            Passionné par les systèmes, les réseaux et la sécurité informatique.
+          </p>
+          <div class="hero__cta">
+            <a href="#projects" class="btn btn--primary btn--lg">
+              Voir mes projets <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="#contact" class="btn btn--outline btn--lg">
+              Me contacter
+            </a>
+          </div>
+        </div>
+
+        <div class="hero__visual" data-animate data-delay="200">
+          <div class="hero__card-wrap">
+            <div class="hero__stat-card hero__stat-card--1">
+              <i class="fa-solid fa-network-wired"></i>
+              <span>Infrastructure</span>
+            </div>
+            <div class="hero__stat-card hero__stat-card--2">
+              <i class="fa-solid fa-shield-halved"></i>
+              <span>Cybersécurité</span>
+            </div>
+            <div class="hero__stat-card hero__stat-card--3">
+              <i class="fa-brands fa-linux"></i>
+              <span>Linux & Windows</span>
+            </div>
+            <div class="hero__profile-chip">
+              <div class="hero__profile-avatar">AH</div>
+              <div>
+                <p class="hero__profile-name">Houraoui Ayoub</p>
+                <p class="hero__profile-sub">BTS SIO · Jean Rostand · Caen</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ STACK / LOGOS ══════════════════════════════════════ -->
+    <section id="stack">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <p class="section-label">Stack technique</p>
+          <h2 class="section-title">Les outils que j'utilise</h2>
+          <p class="section-desc">Systèmes, réseaux, cybersécurité et développement web.</p>
+        </div>
+      </div>
+
+      <!-- Marquee row 1 — gauche à droite -->
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track marquee__track--fwd">
+          <div class="marquee__items">
+            <div class="logo-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/debian/debian-original.svg" alt="Debian" /><span>Debian</span></div>
+            <div class="logo-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ubuntu/ubuntu-original.svg" alt="Ubuntu" /><span>Ubuntu</span></div>
+            <div class="logo-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" alt="Linux" /><span>Linux</span></div>
+            <div class="logo-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/windows11/windows11-original.svg" alt="Windows" /><span>Windows</span></div>
+            <div class="logo-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" alt="Docker" /><span>Docker</span></div>
+            <div class="logo-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="MySQL" /><span>MySQL</span></div>
+            <div class="logo-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" alt="PHP" /><span>PHP</span></div>
+            <div class="logo-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML5" /><span>HTML5</span></div>
+            <div class="logo-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS3" /><span>CSS3</span></div>
+            <div class="logo-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git" /><span>Git</span></div>
+            <div class="logo-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="GitHub" class="invert-light" /><span>GitHub</span></div>
+            <div class="logo-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/wordpress/wordpress-original.svg" alt="WordPress" /><span>WordPress</span></div>
+          </div>
+          <!-- duplicate for seamless loop -->
+          <div class="marquee__items" aria-hidden="true">
+            <div class="logo-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/debian/debian-original.svg" alt="" /><span>Debian</span></div>
+            <div class="logo-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ubuntu/ubuntu-original.svg" alt="" /><span>Ubuntu</span></div>
+            <div class="logo-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" alt="" /><span>Linux</span></div>
+            <div class="logo-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/windows11/windows11-original.svg" alt="" /><span>Windows</span></div>
+            <div class="logo-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" alt="" /><span>Docker</span></div>
+            <div class="logo-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="" /><span>MySQL</span></div>
+            <div class="logo-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" alt="" /><span>PHP</span></div>
+            <div class="logo-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="" /><span>HTML5</span></div>
+            <div class="logo-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="" /><span>CSS3</span></div>
+            <div class="logo-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="" /><span>Git</span></div>
+            <div class="logo-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="" class="invert-light" /><span>GitHub</span></div>
+            <div class="logo-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/wordpress/wordpress-original.svg" alt="" /><span>WordPress</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Marquee row 2 — droite à gauche -->
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track marquee__track--rev">
+          <div class="marquee__items">
+            <div class="logo-chip logo-chip--icon"><i class="fa-solid fa-network-wired" style="color:#0070f3"></i><span>Cisco PT</span></div>
+            <div class="logo-chip logo-chip--icon"><i class="fa-solid fa-server" style="color:#e67e22"></i><span>Proxmox</span></div>
+            <div class="logo-chip logo-chip--icon"><i class="fa-brands fa-windows" style="color:#0078d4"></i><span>Active Dir.</span></div>
+            <div class="logo-chip logo-chip--icon"><i class="fa-solid fa-database" style="color:#3498db"></i><span>MariaDB</span></div>
+            <div class="logo-chip logo-chip--icon"><i class="fa-solid fa-shield-halved" style="color:#e74c3c"></i><span>NMAP</span></div>
+            <div class="logo-chip logo-chip--icon"><i class="fa-solid fa-user-secret" style="color:#8e44ad"></i><span>Kali Linux</span></div>
+            <div class="logo-chip logo-chip--icon"><i class="fa-solid fa-box-open" style="color:#27ae60"></i><span>VirtualBox</span></div>
+            <div class="logo-chip logo-chip--icon"><i class="fa-solid fa-file-code" style="color:#e67e22"></i><span>WAMP</span></div>
+            <div class="logo-chip logo-chip--icon"><i class="fa-solid fa-clipboard-list" style="color:#2980b9"></i><span>GLPI</span></div>
+            <div class="logo-chip logo-chip--icon"><i class="fa-solid fa-trello" style="color:#0052cc"></i><span>Trello</span></div>
+            <div class="logo-chip logo-chip--icon"><i class="fa-solid fa-share-nodes" style="color:#16a085"></i><span>Samba</span></div>
+          </div>
+          <div class="marquee__items" aria-hidden="true">
+            <div class="logo-chip logo-chip--icon"><i class="fa-solid fa-network-wired" style="color:#0070f3"></i><span>Cisco PT</span></div>
+            <div class="logo-chip logo-chip--icon"><i class="fa-solid fa-server" style="color:#e67e22"></i><span>Proxmox</span></div>
+            <div class="logo-chip logo-chip--icon"><i class="fa-brands fa-windows" style="color:#0078d4"></i><span>Active Dir.</span></div>
+            <div class="logo-chip logo-chip--icon"><i class="fa-solid fa-database" style="color:#3498db"></i><span>MariaDB</span></div>
+            <div class="logo-chip logo-chip--icon"><i class="fa-solid fa-shield-halved" style="color:#e74c3c"></i><span>NMAP</span></div>
+            <div class="logo-chip logo-chip--icon"><i class="fa-solid fa-user-secret" style="color:#8e44ad"></i><span>Kali Linux</span></div>
+            <div class="logo-chip logo-chip--icon"><i class="fa-solid fa-box-open" style="color:#27ae60"></i><span>VirtualBox</span></div>
+            <div class="logo-chip logo-chip--icon"><i class="fa-solid fa-file-code" style="color:#e67e22"></i><span>WAMP</span></div>
+            <div class="logo-chip logo-chip--icon"><i class="fa-solid fa-clipboard-list" style="color:#2980b9"></i><span>GLPI</span></div>
+            <div class="logo-chip logo-chip--icon"><i class="fa-solid fa-trello" style="color:#0052cc"></i><span>Trello</span></div>
+            <div class="logo-chip logo-chip--icon"><i class="fa-solid fa-share-nodes" style="color:#16a085"></i><span>Samba</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ À PROPOS ═══════════════════════════════════════════ -->
+    <section id="about">
+      <div class="container">
+        <div class="about__grid">
+          <div class="about__content" data-animate>
+            <p class="section-label">À propos</p>
+            <h2 class="section-title">Qui suis-je&nbsp;?</h2>
+            <p class="about__text">
+              Je suis <strong>Ayoub Houraoui</strong>, 20 ans, étudiant en
+              <strong>BTS SIO option SISR</strong> au lycée Jean Rostand à Caen.
+              Passionné d'informatique depuis le collège, je me spécialise dans
+              l'infrastructure réseau, l'administration système et la cybersécurité.
+            </p>
+            <p class="about__text">
+              Mon stage 2026 à la <strong>DSI de la Mairie d'Hérouville-Saint-Clair</strong>
+              m'a permis d'évoluer dans un environnement professionnel réel.
+              Je suis à la recherche d'un nouveau stage ou d'une alternance.
+            </p>
+            <div class="about__info-grid">
+              <div class="about__info-item">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Caen – Alençon</span>
+              </div>
+              <div class="about__info-item">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>BTS SIO SISR</span>
+              </div>
+              <div class="about__info-item">
+                <i class="fa-solid fa-car"></i>
+                <span>Permis B – Véhiculé</span>
+              </div>
+              <div class="about__info-item">
+                <i class="fa-solid fa-calendar"></i>
+                <span>Né le 23/01/2006</span>
+              </div>
+            </div>
+            <div class="about__actions">
+              <a href="https://fr.linkedin.com/in/ayoub-houraoui" target="_blank" rel="noopener" class="btn btn--outline">
+                <i class="fa-brands fa-linkedin"></i> LinkedIn
+              </a>
+              <a href="https://github.com/ayoubhry/portfolio" target="_blank" rel="noopener" class="btn btn--outline">
+                <i class="fa-brands fa-github"></i> GitHub
+              </a>
+              <a href="assets/cv/CV_Houraoui.pdf" download class="btn btn--outline">
+                <i class="fa-solid fa-file-arrow-down"></i> CV
+              </a>
+            </div>
+          </div>
+
+          <div class="about__photo-wrap" data-animate data-delay="150">
+            <div class="about__photo">
+              <img src="assets/img/photo.jpg" alt="Ayoub Houraoui" loading="lazy" />
+            </div>
+            <div class="about__stats">
+              <div class="about__stat">
+                <span class="about__stat-n">2</span>
+                <span class="about__stat-l">Ans de BTS</span>
+              </div>
+              <div class="about__stat">
+                <span class="about__stat-n">1</span>
+                <span class="about__stat-l">Stage réalisé</span>
+              </div>
+              <div class="about__stat">
+                <span class="about__stat-n">2</span>
+                <span class="about__stat-l">Certifications</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ PROJETS ════════════════════════════════════════════ -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <p class="section-label">Projets</p>
+          <h2 class="section-title">Réalisations & Expériences</h2>
+          <p class="section-desc">Ce que j'ai concrètement mis en œuvre durant ma formation et mon stage.</p>
+        </div>
+
+        <div class="projects__grid">
+
+          <article class="project-card project-card--wide" data-animate>
+            <div class="project-card__top">
+              <div class="project-card__icon project-card__icon--blue">
+                <i class="fa-solid fa-building-columns"></i>
+              </div>
+              <span class="project-tag">Stage 2026</span>
+            </div>
+            <h3 class="project-card__title">Direction des Systèmes Informatiques</h3>
+            <p class="project-card__org">Mairie d'Hérouville-Saint-Clair</p>
+            <p class="project-card__desc">Administration du parc informatique, support aux utilisateurs, gestion de l'infrastructure réseau et des serveurs de la collectivité territoriale.</p>
+            <div class="project-card__tags">
+              <span>GLPI</span><span>Parc informatique</span><span>Support N1/N2</span><span>Infrastructure</span>
+            </div>
+          </article>
+
+          <article class="project-card" data-animate data-delay="80">
+            <div class="project-card__top">
+              <div class="project-card__icon project-card__icon--orange">
+                <i class="fa-solid fa-network-wired"></i>
+              </div>
+              <span class="project-tag">Réseau</span>
+            </div>
+            <h3 class="project-card__title">Infrastructure VLAN</h3>
+            <p class="project-card__desc">Conception d'une infrastructure réseau segmentée avec VLAN, configuration de switchs et routeurs via Cisco Packet Tracer.</p>
+            <div class="project-card__tags">
+              <span>Cisco PT</span><span>VLAN</span><span>Switch</span><span>Routeur</span>
+            </div>
+          </article>
+
+          <article class="project-card" data-animate data-delay="160">
+            <div class="project-card__top">
+              <div class="project-card__icon project-card__icon--green">
+                <i class="fa-brands fa-linux"></i>
+              </div>
+              <span class="project-tag">Serveur</span>
+            </div>
+            <h3 class="project-card__title">Serveur Linux – Docker & Samba</h3>
+            <p class="project-card__desc">Déploiement Debian avec conteneurisation Docker, partage Samba et virtualisation via VirtualBox / Proxmox.</p>
+            <div class="project-card__tags">
+              <span>Debian</span><span>Docker</span><span>Samba</span><span>Proxmox</span>
+            </div>
+          </article>
+
+          <article class="project-card" data-animate data-delay="80">
+            <div class="project-card__top">
+              <div class="project-card__icon project-card__icon--red">
+                <i class="fa-solid fa-user-secret"></i>
+              </div>
+              <span class="project-tag">Cybersécurité</span>
+            </div>
+            <h3 class="project-card__title">Audit & Tests de Sécurité</h3>
+            <p class="project-card__desc">Tests de pénétration en environnement contrôlé : NMAP, payloads Windows, campagne phishing et Social Engineering Toolkit.</p>
+            <div class="project-card__tags">
+              <span>Kali</span><span>NMAP</span><span>SET</span><span>Phishing</span>
+            </div>
+          </article>
+
+          <article class="project-card" data-animate data-delay="160">
+            <div class="project-card__top">
+              <div class="project-card__icon project-card__icon--blue">
+                <i class="fa-brands fa-windows"></i>
+              </div>
+              <span class="project-tag">Windows</span>
+            </div>
+            <h3 class="project-card__title">Active Directory</h3>
+            <p class="project-card__desc">Déploiement et administration d'un AD sous Windows Server 2016 : utilisateurs, GPO, DNS, DHCP et gestion des droits.</p>
+            <div class="project-card__tags">
+              <span>WS 2016</span><span>AD</span><span>GPO</span><span>DNS/DHCP</span>
+            </div>
+          </article>
+
+          <article class="project-card" data-animate data-delay="240">
+            <div class="project-card__top">
+              <div class="project-card__icon project-card__icon--purple">
+                <i class="fa-solid fa-code"></i>
+              </div>
+              <span class="project-tag">Web</span>
+            </div>
+            <h3 class="project-card__title">Développement Web</h3>
+            <p class="project-card__desc">Sites et applications dynamiques PHP/MySQL dans le cadre du BTS, gestion BDD via phpMyAdmin, déploiement WAMP.</p>
+            <div class="project-card__tags">
+              <span>HTML/CSS</span><span>PHP</span><span>MySQL</span><span>WAMP</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ CERTIFICATIONS ═════════════════════════════════════ -->
+    <section id="certifications">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <p class="section-label">Certifications</p>
+          <h2 class="section-title">Diplômes & Certifications</h2>
+        </div>
+
+        <div class="certs__grid">
+          <div class="cert-card cert-card--featured" data-animate>
+            <div class="cert-card__left">
+              <div class="cert-icon cert-icon--blue"><i class="fa-solid fa-graduation-cap"></i></div>
+            </div>
+            <div class="cert-card__body">
+              <span class="cert-status cert-status--current">En cours</span>
+              <h3>BTS SIO – SISR</h3>
+              <p>Services Informatiques aux Organisations · Option SISR</p>
+              <p class="cert-school"><i class="fa-solid fa-school"></i> Lycée Jean Rostand, Caen</p>
+            </div>
+            <div class="cert-year">2025 – 2027</div>
+          </div>
+
+          <div class="cert-card" data-animate data-delay="100">
+            <div class="cert-card__left">
+              <div class="cert-icon cert-icon--green"><i class="fa-solid fa-certificate"></i></div>
+            </div>
+            <div class="cert-card__body">
+              <span class="cert-status cert-status--done">Obtenu · Juin 2025</span>
+              <h3>Baccalauréat Général</h3>
+              <p>Mathématiques & Sciences de l'Ingénieur</p>
+              <p class="cert-school"><i class="fa-solid fa-school"></i> Lycée Alain, Alençon</p>
+            </div>
+            <div class="cert-year">2025</div>
+          </div>
+
+          <div class="cert-card" data-animate data-delay="200">
+            <div class="cert-card__left">
+              <div class="cert-icon cert-icon--red"><i class="fa-solid fa-shield-halved"></i></div>
+            </div>
+            <div class="cert-card__body">
+              <span class="cert-status cert-status--done">Obtenu</span>
+              <h3>Passe ton Hack d'Abord</h3>
+              <p>Explorateur Cybersécurité · Fondamentaux attaque & défense</p>
+            </div>
+            <div class="cert-year">2025</div>
+          </div>
+
+          <div class="cert-card" data-animate data-delay="300">
+            <div class="cert-card__left">
+              <div class="cert-icon cert-icon--yellow"><i class="fa-solid fa-star"></i></div>
+            </div>
+            <div class="cert-card__body">
+              <span class="cert-status cert-status--done">Obtenu</span>
+              <h3>Certification PIX</h3>
+              <p>Compétences numériques nationales · 5 domaines</p>
+            </div>
+            <div class="cert-year">2024</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ CONTACT ════════════════════════════════════════════ -->
+    <section id="contact">
+      <div class="container">
+        <div class="contact__inner" data-animate>
+          <div class="contact__text">
+            <p class="section-label">Contact</p>
+            <h2 class="section-title">Travaillons ensemble</h2>
+            <p class="contact__desc">Je suis disponible pour un <strong>stage</strong> ou une <strong>alternance</strong> en infrastructure, réseaux ou cybersécurité.</p>
+            <ul class="contact__list">
+              <li>
+                <div class="contact__icon"><i class="fa-solid fa-envelope"></i></div>
+                <div>
+                  <span>Email</span>
+                  <a href="mailto:ayoub.houraoui.contact@gmail.com">ayoub.houraoui.contact@gmail.com</a>
+                </div>
+              </li>
+              <li>
+                <div class="contact__icon"><i class="fa-solid fa-phone"></i></div>
+                <div>
+                  <span>Téléphone</span>
+                  <a href="tel:+33745387234">07 45 38 72 34</a>
+                </div>
+              </li>
+              <li>
+                <div class="contact__icon"><i class="fa-solid fa-location-dot"></i></div>
+                <div>
+                  <span>Localisation</span>
+                  <span>Caen – Alençon (Normandie)</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="contact__cta">
+            <a href="mailto:ayoub.houraoui.contact@gmail.com" class="btn btn--primary btn--lg btn--full">
+              <i class="fa-solid fa-paper-plane"></i> Envoyer un email
+            </a>
+            <a href="https://fr.linkedin.com/in/ayoub-houraoui" target="_blank" rel="noopener" class="btn btn--outline btn--lg btn--full">
+              <i class="fa-brands fa-linkedin"></i> LinkedIn
+            </a>
+            <a href="https://github.com/ayoubhry/portfolio" target="_blank" rel="noopener" class="btn btn--outline btn--lg btn--full">
+              <i class="fa-brands fa-github"></i> GitHub
+            </a>
+            <a href="assets/cv/CV_Houraoui.pdf" download class="btn btn--ghost btn--lg btn--full">
+              <i class="fa-solid fa-file-arrow-down"></i> Télécharger mon CV
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer__inner">
+      <p class="footer__name">Ayoub Houraoui</p>
+      <p class="footer__sub">BTS SIO · SISR · Caen — <span id="footerYear"></span></p>
+      <div class="footer__socials">
+        <a href="https://fr.linkedin.com/in/ayoub-houraoui" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://github.com/ayoubhry/portfolio" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="mailto:ayoub.houraoui.contact@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
