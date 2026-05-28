@@ -555,7 +555,99 @@ footer {
 }
 .footer__socials a:hover { color:var(--accent); border-color:var(--accent); }
 
-/* ─── 11. RESPONSIVE ─────────────────────────────────── */
+/* ─── 11. SOCIAL SIDEBAR FLOTTANTE ──────────────────── */
+.social-sidebar {
+  position: fixed;
+  right: 2rem;
+  bottom: 0;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+  /* Apparaît après un petit scroll */
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity .4s ease, transform .4s ease;
+  pointer-events: none;
+}
+.social-sidebar.visible {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: all;
+}
+
+.social-sidebar__link {
+  position: relative;
+  width: 40px; height: 40px;
+  border-radius: var(--r);
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-2);
+  font-size: 1rem;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--t);
+}
+.social-sidebar__link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-light);
+  transform: translateX(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Tooltip au survol */
+.social-sidebar__link::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%; transform: translateY(-50%);
+  background: var(--text);
+  color: var(--bg);
+  font-size: .72rem;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--t);
+}
+.social-sidebar__link::after {
+  content: '';
+  position: absolute;
+  right: calc(100% + 6px);
+  top: 50%; transform: translateY(-50%);
+  border: 5px solid transparent;
+  border-left-color: var(--text);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--t);
+}
+.social-sidebar__link:hover::before,
+.social-sidebar__link:hover::after { opacity: 1; }
+
+.social-sidebar__line {
+  width: 1.5px;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--border), transparent);
+  margin-top: .25rem;
+}
+
+/* ─── 12. CONTACT CTA hint ───────────────────────────── */
+.contact__cta-hint {
+  font-size: .82rem;
+  color: var(--text-3);
+  text-align: center;
+  padding: .75rem;
+  background: var(--surface-2);
+  border: 1.5px dashed var(--border);
+  border-radius: var(--r);
+  line-height: 1.5;
+}
+
+/* ─── 13. RESPONSIVE ─────────────────────────────────── */
 @media (max-width:1024px) {
   .hero__inner      { grid-template-columns:1fr; }
   .hero__visual     { display:none; }
@@ -569,6 +661,7 @@ footer {
 
 @media (max-width:768px) {
   section { padding:3.5rem 0; }
+  .social-sidebar { display: none; }
 
   .nav__links {
     position:fixed; top:0; right:-100%; width:min(300px,85vw);
