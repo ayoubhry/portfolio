@@ -1,4 +1,4 @@
-# 👨‍💻 Portfolio — HOURAOUI Ayoub
+# Portfolio — HOURAOUI Ayoub
 
 > Portfolio personnel · BTS SIO option SISR · Caen
 
@@ -7,34 +7,29 @@
 
 ---
 
-## 🚀 Aperçu
+## Aperçu
 
 Portfolio one-page développé en **HTML / CSS / JavaScript Vanilla**, déployé via **GitHub Pages**.
 
-**Live :** [https://ayoubhry.github.io/portfolio](https://ayoubhry.github.io/portfolio)
+**Live :** [Ayoub Houraoui - Portfolio](https://ayoubhry.github.io/portfolio)
 
 ---
 
-## 📁 Structure
+## Structure
 
 ```
 portfolio/
-├── index.html           ← Page principale
-├── css/
-│   └── style.css        ← Feuille de styles complète
-├── js/
-│   └── main.js          ← Logique JS (animations, navbar, canvas...)
-├── assets/
-│   ├── img/
-│   │   └── photo.jpg    ← Votre photo (à ajouter)
-│   └── cv/
-│       └── CV_Houraoui.pdf  ← CV PDF (à ajouter)
+├── index.html
+├── css/style.css
+├── js/main.js
+├── assets/img/photo.jpg
+│   └── cv/CV_Houraoui.pdf
 └── README.md
 ```
 
 ---
 
-## ✨ Fonctionnalités
+## Fonctionnalités
 
 - 🎨 Design **dark** professionnel (navy + cyan)
 - 🌐 Animation **canvas** particules dans le Hero
@@ -46,7 +41,7 @@ portfolio/
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Technologie | Usage |
 |---|---|
@@ -59,7 +54,7 @@ portfolio/
 
 ---
 
-## 📦 Déploiement
+## Déploiement
 
 ```bash
 # 1. Cloner le repo
@@ -81,7 +76,7 @@ git push origin main
 
 ---
 
-## 👤 Contact
+## Contact
 
 - **Email :** ayoub.houraoui.contact@gmail.com
 - **LinkedIn :** [linkedin.com/in/ayoub-houraoui](https://fr.linkedin.com/in/ayoub-houraoui)
@@ -89,4 +84,4 @@ git push origin main
 
 ---
 
-*Fait avec ❤️ par Ayoub Houraoui – BTS SIO SISR, Caen*
+*Fait par Ayoub Houraoui – BTS SIO SISR, Caen*
