@@ -101,8 +101,8 @@ section { padding: 5rem 0; }
 
 .audio-toggle {
   position: fixed;
-  bottom: 2rem;
-  left: 2rem;
+  bottom: 20px;
+  left: 20px;
   z-index: 100;
   width: 40px;
   height: 40px;
@@ -123,6 +123,8 @@ assistant { position: fixed; bottom: 20px; right: 20px; cursor: pointer; transit
     position: fixed;
     bottom: 20px;
     right: 20px;
+    right: 20px;
+    z-index: 100;
     cursor: pointer;
     transition: transform 0.3s;
     position: relative; /* Indispensable pour que la bouche reste sur le personnage */
