@@ -495,6 +495,26 @@
   </footer>
 
   <script src="js/main.js"></script>
+<button id="audioControl" class="audio-toggle" aria-label="Activer/Désactiver le son">
+  <i class="fa-solid fa-volume-xmark" id="audioIcon"></i>
+</button>
+
+<!-- Balise Audio -->
+<audio id="bgMusic" loop>
+  <source src="assets/audio/background.mp3" type="audio/mpeg">
+</audio>
+
+<div class="assistant" id="assistant">
+    <!-- Image de ton perso -->
+    <img src="assets/img/personnage.png" alt="Assistant">
+    <!-- La bouche (un simple rectangle ou image) -->
+    <div class="mouth" id="mouth"></div>
+</div>
+
+<!-- Bulle de dialogue -->
+<div id="speechBubble" class="hidden"></div>
+
+<script src="js/main.js"></script>
 </body>
 </html>
 
