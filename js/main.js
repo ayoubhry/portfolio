@@ -348,6 +348,18 @@
 });
 
 const assistant = document.getElementById('assistant');
+
+assistant.addEventListener('click', (e) => {
+    e.stopPropagation(); // EMPÊCHE le clic de se propager aux autres éléments
+    
+    // Animation de saut
+    assistant.classList.add('active');
+    setTimeout(() => assistant.classList.remove('active'), 500);
+    
+    // Ton texte
+    parler("Bonjour ! Je suis l'assistant de ton portfolio.");
+});
+
 const mouth = document.getElementById('mouth');
 const bubble = document.getElementById('speechBubble');
 
