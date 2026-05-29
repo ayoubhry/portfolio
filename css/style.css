@@ -862,21 +862,57 @@ footer {
 
 /* ─── 17. RESPONSIVE (assistant) ─────────────────────── */
 @media (max-width:1024px) {
+  /* Hero */
   .hero__visual       { display:none; }
+  .hero__inner        { grid-template-columns:1fr; }
+
+  /* Projects */
   .projects__grid     { grid-template-columns:1fr 1fr; }
   .project-card--wide { grid-column:span 2; }
+
+  /* About */
   .about__grid        { grid-template-columns:1fr; }
   .about__photo-wrap  { flex-direction:row; align-items:flex-start; }
-  .about__photo       { width:200px; }
+  .about__photo       { width:200px; flex-shrink:0; }
+
+  /* Contact */
   .contact__inner     { grid-template-columns:1fr; }
+
+  /* Sidebar sociale masquée sur tablette */
+  .social-sidebar     { display:none; }
 }
 
 @media (max-width:768px) {
   section { padding:3.5rem 0; }
   .social-sidebar { display: none; }
-  .assistant      { width: 80px; left: 50%; transform: translateX(-50%); }
-  .speech-bubble  { left: 50%; transform: translateX(-50%); max-width: 260px; bottom: 100px; }
 
+  /* Assistant + bulle repositionnés */
+  .assistant {
+    width: 75px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .assistant:hover  { transform: translateX(-50%) scale(1.06); }
+  .assistant:active { transform: translateX(-50%) scale(0.95); }
+  .speech-bubble {
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 240px;
+    bottom: 95px;
+    font-size: .8rem;
+  }
+  .speech-bubble--hidden {
+    transform: translateX(-50%) translateY(8px) scale(.95);
+  }
+
+  /* Bouton audio décalé à gauche pour ne pas chevaucher l'assistant */
+  .audio-toggle {
+    right: auto;
+    left: 1rem;
+    bottom: 1rem;
+  }
+
+  /* Navbar mobile */
   .nav__links {
     position:fixed; top:0; right:-100%; width:min(300px,85vw);
     height:100dvh; background:var(--surface);
@@ -900,78 +936,73 @@ footer {
     margin-top: .25rem;
   }
 
+  /* Grilles */
   .projects__grid     { grid-template-columns:1fr; }
   .project-card--wide { grid-column:span 1; }
   .certs__grid        { grid-template-columns:1fr; }
   .about__photo-wrap  { flex-direction:column; align-items:flex-start; }
+  .about__photo       { width: 100%; max-width: 220px; }
+
+  /* Typographie */
+  .section-title { font-size: clamp(1.55rem, 5vw, 2rem); }
+  .hero__title   { font-size: clamp(2rem, 7vw, 3rem); }
+  .hero__desc    { font-size: .95rem; }
 }
 
 @media (max-width:480px) {
   .container { padding:0 1rem; }
-  .hero__cta { flex-direction:column; }
-  .btn--lg   { width:100%; justify-content:center; }
+
+  /* Hero */
+  .hero__cta  { flex-direction:column; }
+  .btn--lg    { width:100%; justify-content:center; }
+  .hero__badge { font-size:.7rem; padding:5px 11px; }
+
+  /* About */
   .about__info-grid { grid-template-columns:1fr; }
-  .cert-card { flex-direction:column; }
-  .cert-year { display:none; }
-}
+  .about__photo     { max-width: 100%; width: 100%; }
 
-/* ─── 18. NOUVELLES FONCTIONNALITÉS ──────────────────── */
+  /* Certifications */
+  .cert-card  { flex-direction:column; }
+  .cert-year  { display:none; }
 
-/* Curseur Smash Bros Melee */
-body {
-  cursor: url('../assets/img/cursor-default.png') 0 0, auto !important;
-}
-a, button, input[type="submit"], .assistant, .social-sidebar__link, .theme-toggle {
-  cursor: url('../assets/img/cursor-pointer.png'), pointer;
-}
+  /* Contact */
+  .contact__cta { padding: 1.25rem; }
 
-/* Indicateur de progression du scroll */
-.scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 0%;
-  height: 4px;
-  background: var(--accent);
-  z-index: 1001; /* Doit être au-dessus de la navbar qui est à 100 */
-  transition: width 0.1s ease-out;
-  pointer-events: none;
-}
+  /* Assistant encore plus petit */
+  .assistant { width: 62px; }
+  .speech-bubble { max-width: 200px; bottom: 85px; font-size: .78rem; }
 
-/* Bouton Retour en haut */
-.back-to-top {
-  position: fixed;
-  top: 5.5rem; /* Placé au-dessus du bouton audio */
-  left: 50%;
-  transform: translateX(-50%) translateY (-20%);
-  z-index: 95;
-  width: 42px; height: 42px;
-  border-radius: 50%;
-  background: var(--surface);
-  border: 1.5px solid var(--border);
-  color: var(--text-2);
-  font-size: 1rem;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: var(--shadow-md);
-  opacity: 0;
-  transform: translateY(20px);
-  pointer-events: none;
-  transition: all var(--t);
-}
+  /* Navbar logo tronqué */
+  .nav__logo { font-size: 1rem; }
 
-.back-to-top.visible {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: all;
-}
-
-.back-to-top:hover {
-  color: var(--accent);
-  border-color: var(--accent);
-  background: var(--accent-light);
+  /* Section padding réduit */
+  section { padding: 2.75rem 0; }
 }
 
 @media (prefers-reduced-motion:reduce) {
   *,*::before,*::after { animation-duration:.01ms !important; transition-duration:.01ms !important; }
   [data-animate] { opacity:1; transform:none; }
+}
+
+/* ─── 18. CENTRAGE MOBILE ────────────────────────────── */
+@media (max-width:768px) {
+  /* Hero centré */
+  .hero__content   { text-align: center; }
+  .hero__badge     { margin-left: auto; margin-right: auto; }
+  .hero__desc      { margin-left: auto; margin-right: auto; }
+  .hero__cta       { justify-content: center; }
+
+  /* Section headers centrés */
+  .section-header  { text-align: center; }
+  .section-desc    { margin-left: auto; margin-right: auto; }
+
+  /* À propos centré */
+  .about__text     { text-align: center; }
+  .about__info-grid { justify-items: center; }
+  .about__actions  { justify-content: center; }
+  .about__photo-wrap { align-items: center; }
+
+  /* Contact centré */
+  .contact__text   { text-align: center; }
+  .contact__list li { flex-direction: column; align-items: center; text-align: center; gap: .4rem; }
 }
