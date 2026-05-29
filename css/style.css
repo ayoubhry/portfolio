@@ -915,6 +915,62 @@ footer {
   .cert-year { display:none; }
 }
 
+/* ─── 18. NOUVELLES FONCTIONNALITÉS ──────────────────── */
+
+/* Curseur Smash Bros Melee */
+body {
+  cursor: url('../assets/img/cursor-default.png') 0 0, auto !important;
+}
+a, button, input[type="submit"], .assistant, .social-sidebar__link, .theme-toggle {
+  cursor: url('../assets/img/cursor-pointer.png'), pointer;
+}
+
+/* Indicateur de progression du scroll */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 4px;
+  background: var(--accent);
+  z-index: 1001; /* Doit être au-dessus de la navbar qui est à 100 */
+  transition: width 0.1s ease-out;
+  pointer-events: none;
+}
+
+/* Bouton Retour en haut */
+.back-to-top {
+  position: fixed;
+  top: 5.5rem; /* Placé au-dessus du bouton audio */
+  left: 50%;
+  transform: translateX(-50%) translateY (-20%);
+  z-index: 95;
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  color: var(--text-2);
+  font-size: 1rem;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: all var(--t);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.back-to-top:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+
 @media (prefers-reduced-motion:reduce) {
   *,*::before,*::after { animation-duration:.01ms !important; transition-duration:.01ms !important; }
   [data-animate] { opacity:1; transform:none; }
