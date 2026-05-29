@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════
    PORTFOLIO – HOURAOUI Ayoub
-   main.js · Version 1.0
+   main.js · Version 1.1
    Vanilla JS — Aucune dépendance externe
 ═══════════════════════════════════════════════════════════════ */
 
@@ -10,17 +10,17 @@
    1. CANVAS BACKGROUND (Hero — Particules connectées)
 ───────────────────────────────────────────────────────────── */
 (function initCanvas() {
-  const canvas  = document.getElementById('heroCanvas');
+  const canvas = document.getElementById('heroCanvas');
   if (!canvas) return;
-  const ctx     = canvas.getContext('2d');
-  const ACCENT  = '0, 200, 255';
-  let   width, height, particles;
+  const ctx    = canvas.getContext('2d');
+  const ACCENT = '0, 200, 255';
+  let width, height, particles;
 
   const CONFIG = {
-    particleCount : 60,
-    maxDist       : 140,
-    speed         : 0.35,
-    radius        : 1.5,
+    particleCount: 60,
+    maxDist:       140,
+    speed:         0.35,
+    radius:        1.5,
   };
 
   function resize() {
@@ -30,10 +30,10 @@
 
   function createParticle() {
     return {
-      x  : Math.random() * width,
-      y  : Math.random() * height,
-      vx : (Math.random() - 0.5) * CONFIG.speed,
-      vy : (Math.random() - 0.5) * CONFIG.speed,
+      x:  Math.random() * width,
+      y:  Math.random() * height,
+      vx: (Math.random() - 0.5) * CONFIG.speed,
+      vy: (Math.random() - 0.5) * CONFIG.speed,
     };
   }
 
@@ -45,7 +45,6 @@
   function draw() {
     ctx.clearRect(0, 0, width, height);
 
-    // Update positions
     particles.forEach(p => {
       p.x += p.vx;
       p.y += p.vy;
@@ -53,7 +52,6 @@
       if (p.y < 0 || p.y > height) p.vy *= -1;
     });
 
-    // Draw connections
     for (let i = 0; i < particles.length; i++) {
       for (let j = i + 1; j < particles.length; j++) {
         const dx   = particles[i].x - particles[j].x;
@@ -71,7 +69,6 @@
       }
     }
 
-    // Draw dots
     particles.forEach(p => {
       ctx.beginPath();
       ctx.arc(p.x, p.y, CONFIG.radius, 0, Math.PI * 2);
@@ -84,7 +81,7 @@
 
   init();
   draw();
-  window.addEventListener('resize', () => { resize(); });
+  window.addEventListener('resize', resize);
 })();
 
 
@@ -106,7 +103,7 @@
   let phraseIdx = 0;
   let charIdx   = 0;
   let deleting  = false;
-  let pause     = false;
+  let paused    = false;
 
   function type() {
     const current = phrases[phraseIdx];
@@ -115,8 +112,8 @@
       el.textContent = current.slice(0, charIdx + 1);
       charIdx++;
       if (charIdx === current.length) {
-        pause = true;
-        setTimeout(() => { pause = false; deleting = true; requestAnimationFrame(tick); }, 2200);
+        paused = true;
+        setTimeout(() => { paused = false; deleting = true; requestAnimationFrame(tick); }, 2200);
         return;
       }
     } else {
@@ -132,7 +129,7 @@
   }
 
   function tick() {
-    if (!pause) type();
+    if (!paused) type();
   }
 
   setTimeout(tick, 800);
@@ -149,48 +146,37 @@
   const navMenu   = document.getElementById('navLinks');
   const sections  = document.querySelectorAll('main section[id]');
 
-  // ── Scroll style
-  function onScroll() {
-    navbar.classList.toggle('scrolled', window.scrollY > 40);
-    highlightActiveLink();
-  }
-
-  // ── Active link on scroll
   function highlightActiveLink() {
     let current = '';
     sections.forEach(sec => {
-      if (window.scrollY >= sec.offsetTop - 120) {
-        current = sec.getAttribute('id');
-      }
+      if (window.scrollY >= sec.offsetTop - 120) current = sec.getAttribute('id');
     });
     navLinks.forEach(link => {
       link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
     });
   }
 
-  // ── Mobile burger toggle
+  function onScroll() {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+    highlightActiveLink();
+  }
+
+  function closeMenu() {
+    navMenu.classList.remove('open');
+    burgerBtn.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
   burgerBtn.addEventListener('click', () => {
     const open = navMenu.classList.toggle('open');
     burgerBtn.classList.toggle('open', open);
     document.body.style.overflow = open ? 'hidden' : '';
   });
 
-  // ── Close menu on link click
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      navMenu.classList.remove('open');
-      burgerBtn.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-  });
+  navLinks.forEach(link => link.addEventListener('click', closeMenu));
 
-  // ── Close menu on outside click
   document.addEventListener('click', e => {
-    if (!navbar.contains(e.target) && navMenu.classList.contains('open')) {
-      navMenu.classList.remove('open');
-      burgerBtn.classList.remove('open');
-      document.body.style.overflow = '';
-    }
+    if (!navbar.contains(e.target) && navMenu.classList.contains('open')) closeMenu();
   });
 
   window.addEventListener('scroll', onScroll, { passive: true });
@@ -205,18 +191,15 @@
   const elements = document.querySelectorAll('[data-animate]');
   if (!elements.length) return;
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const delay = parseInt(entry.target.dataset.delay || 0, 10);
-          setTimeout(() => entry.target.classList.add('in-view'), delay);
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-  );
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const delay = parseInt(entry.target.dataset.delay || 0, 10);
+        setTimeout(() => entry.target.classList.add('in-view'), delay);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
   elements.forEach(el => observer.observe(el));
 })();
@@ -231,8 +214,7 @@
       const target = document.querySelector(link.getAttribute('href'));
       if (!target) return;
       e.preventDefault();
-      const offset = 70; // hauteur navbar
-      const top    = target.getBoundingClientRect().top + window.scrollY - offset;
+      const top = target.getBoundingClientRect().top + window.scrollY - 70;
       window.scrollTo({ top, behavior: 'smooth' });
     });
   });
@@ -252,39 +234,32 @@
    7. SKILL CARDS — Staggered entry delay
 ───────────────────────────────────────────────────────────── */
 (function initSkillStagger() {
-  const cards = document.querySelectorAll('.skill-card[data-animate]');
-  cards.forEach((card, i) => {
-    if (!card.dataset.delay) {
-      card.dataset.delay = i * 80;
-    }
+  document.querySelectorAll('.skill-card[data-animate]').forEach((card, i) => {
+    if (!card.dataset.delay) card.dataset.delay = i * 80;
   });
 })();
-
 
 
 /* ─────────────────────────────────────────────────────────────
    8. PROJECT CARDS — Staggered entry delay
 ───────────────────────────────────────────────────────────── */
 (function initProjectStagger() {
-  const cards = document.querySelectorAll('.project-card[data-animate]');
-  cards.forEach((card, i) => {
-    if (!card.dataset.delay) {
-      card.dataset.delay = i * 80;
-    }
+  document.querySelectorAll('.project-card[data-animate]').forEach((card, i) => {
+    if (!card.dataset.delay) card.dataset.delay = i * 80;
   });
 })();
+
 
 /* ─────────────────────────────────────────────────────────────
    9. THEME TOGGLE (Clair / Sombre)
 ───────────────────────────────────────────────────────────── */
 (function initThemeToggle() {
-  const html      = document.documentElement;
-  const toggles   = [
+  const html    = document.documentElement;
+  const toggles = [
     document.getElementById('themeToggle'),
     document.getElementById('themeToggleMobile'),
   ].filter(Boolean);
 
-  // Restore saved preference
   const saved = localStorage.getItem('theme');
   if (saved) html.setAttribute('data-theme', saved);
 
@@ -317,78 +292,152 @@
   onScroll();
 })();
 
-(function initAudio() {
-  const audio = document.getElementById('bgMusic');
-  const btn = document.getElementById('audioControl');
-  const icon = document.getElementById('audioIcon');
-  let played = false;
 
-  const playAudio = () => {
-    if (!played) {
-      audio.play().then(() => {
-        played = true;
-        icon.className = 'fa-solid fa-volume-high';
-      }).catch(e => console.log("Lecture auto bloquée par le navigateur"));
-    }
-  };
+/* ─────────────────────────────────────────────────────────────
+   11. AUDIO BACKGROUND + ASSISTANT GIF
+   ─────────────────────────────────────────────────────────────
+   Structure assets requise :
+     assets/audio/background.mp3     → musique de fond
+     assets/audio/sfx/sfx1.mp3       → son 1 au clic (tes propres sons)
+     assets/audio/sfx/sfx2.mp3       → son 2
+     assets/audio/sfx/sfx3.mp3       → son 3
+     assets/img/assistant.gif        → ton GIF animé
+───────────────────────────────────────────────────────────── */
+(function initAssistant() {
 
-  // Lance la musique dès le premier clic n'importe où sur la page
-  document.addEventListener('click', playAudio, { once: true });
+  /* ── Éléments DOM ── */
+  const audio     = document.getElementById('bgMusic');
+  const audioBtn  = document.getElementById('audioControl');
+  const audioIcon = document.getElementById('audioIcon');
+  const assistant = document.getElementById('assistant');
+  const bubble    = document.getElementById('speechBubble');
+  const bubbleText= document.getElementById('speechText');
 
-  // Gère le bouton mute/unmute
-  btn.addEventListener('click', (e) => {
-  e.stopPropagation();
-  if (audio.paused) {
-    audio.play();
-    icon.className = 'fa-solid fa-volume-high';
-  } else {
-    audio.pause();
-    icon.className = 'fa-solid fa-volume-xmark';
+  if (!assistant || !bubble) return;
+
+  /* ── Sons custom (place tes fichiers dans assets/audio/sfx/) ── */
+  const SFX_FILES = [
+    'assets/audio/sfx/sfx1.mp3',
+    'assets/audio/sfx/sfx2.mp3',
+    'assets/audio/sfx/sfx3.mp3',
+  ];
+  // Pré-charge les objets Audio pour éviter le délai
+  const sfxPool = SFX_FILES.map(src => {
+    const a = new Audio(src);
+    a.volume = 0.7;
+    return a;
+  });
+
+  function playRandomSfx() {
+    const sfx = sfxPool[Math.floor(Math.random() * sfxPool.length)];
+    sfx.currentTime = 0;
+    sfx.play().catch(() => {}); // silencieux si fichier absent
   }
-});
 
-const assistant = document.getElementById('assistant');
+  /* ── Messages affichés dans la bulle ── */
+  const MESSAGES = [
+    'Salut ! Bienvenue sur mon portfolio 👋',
+    'Besoin d\'infos ? Contacte-moi !',
+    'BTS SIO SISR · Lycée Jean Rostand · Caen',
+    'Je suis à la recherche d\'un stage ou d\'une alternance !',
+    'Passionné par les réseaux et la cybersécurité 🔐',
+    'N\'hésite pas à télécharger mon CV ⬇️',
+    'Portfolio fait maison en HTML / CSS / JS ✨',
+    'Stack : Linux · Docker · Windows Server · Kali 🐧',
+  ];
 
-assistant.addEventListener('click', (e) => {
-    e.stopPropagation(); // EMPÊCHE le clic de se propager aux autres éléments
-    
-    // Animation de saut
-    assistant.classList.add('active');
-    setTimeout(() => assistant.classList.remove('active'), 500);
-    
-    // Ton texte
-    parler("Bonjour ! Je suis l'assistant de ton portfolio.");
-});
+  let lastMsgIdx  = -1;
+  let hideTimer   = null;
+  let isShowing   = false;
 
-const mouth = document.getElementById('mouth');
-const bubble = document.getElementById('speechBubble');
+  function getRandomMessage() {
+    let idx;
+    do { idx = Math.floor(Math.random() * MESSAGES.length); }
+    while (idx === lastMsgIdx && MESSAGES.length > 1);
+    lastMsgIdx = idx;
+    return MESSAGES[idx];
+  }
 
-function parler(texte) {
-    const utterance = new SpeechSynthesisUtterance(texte);
-    utterance.lang = 'fr-FR';
+  /* ── Affiche la bulle avec effet de frappe ── */
+  function showBubble(message) {
+    // Annule le timer de fermeture en cours
+    clearTimeout(hideTimer);
 
-    utterance.onstart = () => {
-        assistant.classList.add('is-talking');
-        bubble.textContent = texte; // Affiche le texte
-        bubble.classList.remove('hidden'); // Affiche la bulle
-    };
+    // Affiche d'abord les points de chargement
+    bubbleText.innerHTML =
+      '<span class="typing-dots">' +
+        '<span></span><span></span><span></span>' +
+      '</span>';
+    bubble.classList.remove('speech-bubble--hidden');
+    isShowing = true;
 
-    utterance.onend = () => {
-        assistant.classList.remove('is-talking');
-        bubble.classList.add('hidden'); // Cache la bulle une fois fini
-    };
+    // Après un court délai : affiche le texte lettre par lettre
+    setTimeout(() => {
+      bubbleText.textContent = '';
+      let i = 0;
+      const interval = setInterval(() => {
+        bubbleText.textContent += message[i];
+        i++;
+        if (i >= message.length) {
+          clearInterval(interval);
+          // Auto-fermeture après lecture
+          hideTimer = setTimeout(hideBubble, 3500);
+        }
+      }, 38);
+    }, 600);
+  }
 
-    window.speechSynthesis.speak(utterance);
-}
+  /* ── Cache la bulle ── */
+  function hideBubble() {
+    bubble.classList.add('speech-bubble--hidden');
+    isShowing = false;
+  }
 
-// Déclencheur au clic
-assistant.addEventListener('click', () => {
-    // Animation de saut
-    assistant.classList.add('active');
-    setTimeout(() => assistant.classList.remove('active'), 500);
+  /* ── Clic sur l'assistant ── */
+  assistant.addEventListener('click', () => {
+    playRandomSfx();
 
-    // Faire parler le personnage
-    parler("Bonjour ! Je suis là pour t'aider à naviguer sur ce portfolio.");
-});
+    // Animation de rebond
+    assistant.classList.remove('bounce');
+    void assistant.offsetWidth; // reset pour re-déclencher l'animation
+    assistant.classList.add('bounce');
+    assistant.addEventListener('animationend', () => {
+      assistant.classList.remove('bounce');
+    }, { once: true });
+
+    // Affiche la bulle
+    showBubble(getRandomMessage());
+  });
+
+  /* ── Clic en dehors → ferme la bulle ── */
+  document.addEventListener('click', e => {
+    if (isShowing && !assistant.contains(e.target) && !bubble.contains(e.target)) {
+      clearTimeout(hideTimer);
+      hideBubble();
+    }
+  });
+
+  /* ────────────────────────────────────────────────────────
+     Musique de fond : premier clic sur la page → lecture
+  ──────────────────────────────────────────────────────── */
+  if (audio) {
+    document.addEventListener('click', () => {
+      audio.play()
+        .then(() => { audioIcon.className = 'fa-solid fa-volume-high'; })
+        .catch(() => {});
+    }, { once: true });
+
+    audioBtn && audioBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      if (audio.paused) {
+        audio.play();
+        audioIcon.className = 'fa-solid fa-volume-high';
+      } else {
+        audio.pause();
+        audioIcon.className = 'fa-solid fa-volume-xmark';
+      }
+    });
+  }
 
 })();
+
