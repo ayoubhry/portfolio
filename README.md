@@ -3,7 +3,7 @@
 > Portfolio personnel · BTS SIO option SISR · Caen
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-live-00c8ff?style=flat-square&logo=github)](https://ayoubhry.github.io/portfolio)
-[![BTS SIO](https://img.shields.io/badge/Formation-BTS%20SIO%20SISR-0d1a2e?style=flat-square)](https://fr.linkedin.com/in/ayoub-houraoui)
+[![BTS SIO](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://fr.linkedin.com/in/ayoub-houraoui)
 
 ---
 
@@ -24,6 +24,7 @@ portfolio/
 ├── js/main.js
 ├── assets/img/photo.jpg
 │   └── cv/CV_Houraoui.pdf
+│   └── audio/background.mp3
 └── README.md
 ```
 
@@ -45,34 +46,12 @@ portfolio/
 
 | Technologie | Usage |
 |---|---|
-| HTML5 sémantique | Structure |
-| CSS3 (Grid, Flexbox, Custom Props) | Style & layout |
-| JavaScript ES6+ (Vanilla) | Interactions |
+| HTML 5 | Structure |
+| CSS 3 | Style & layout |
+| JavaScript (Vanilla) | Interactions |
 | Font Awesome 6 | Icônes |
-| Google Fonts (Syne + JetBrains Mono + Manrope) | Typographie |
+| Google Fonts | Typographie |
 | GitHub Pages | Hébergement |
-
----
-
-## Déploiement
-
-```bash
-# 1. Cloner le repo
-git clone https://github.com/ayoubhry/portfolio.git
-cd portfolio
-
-# 2. Ajouter vos fichiers
-cp votre-photo.jpg assets/img/photo.jpg
-cp votre-cv.pdf assets/cv/CV_Houraoui.pdf
-
-# 3. Push sur GitHub
-git add .
-git commit -m "feat: initial portfolio"
-git push origin main
-
-# 4. Activer GitHub Pages
-# Settings → Pages → Branch: main → / (root) → Save
-```
 
 ---
 
@@ -84,4 +63,4 @@ git push origin main
 
 ---
 
-*Fait par Ayoub Houraoui – BTS SIO SISR, Caen*
+*Fait par Ayoub Houraoui*
