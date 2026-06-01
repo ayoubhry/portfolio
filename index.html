@@ -312,7 +312,7 @@
             <p class="project-card__org">Mairie d'Hérouville-Saint-Clair</p>
             <p class="project-card__desc">Administration du parc informatique, support aux utilisateurs, gestion de l'infrastructure réseau et des serveurs de la collectivité territoriale.</p>
             <div class="project-card__tags">
-              <span>GLPI</span><span>Parc informatique</span><span>Support N1/N2</span><span>Infrastructure</span>
+              <span class="tag-clickable" data-tag="GLPI">GLPI</span><span class="tag-clickable" data-tag="Parc informatique">Parc informatique</span><span class="tag-clickable" data-tag="Support N1/N2">Support N1/N2</span><span class="tag-clickable" data-tag="Infrastructure">Infrastructure</span>
             </div>
           </article>
 
@@ -326,7 +326,7 @@
             <h3 class="project-card__title">Infrastructure VLAN</h3>
             <p class="project-card__desc">Conception d'une infrastructure réseau segmentée avec VLAN, configuration de switchs et routeurs via Cisco Packet Tracer.</p>
             <div class="project-card__tags">
-              <span>Cisco PT</span><span>VLAN</span><span>Switch</span><span>Routeur</span>
+              <span class="tag-clickable" data-tag="Cisco PT">Cisco PT</span><span class="tag-clickable" data-tag="VLAN">VLAN</span><span class="tag-clickable" data-tag="Switch">Switch</span><span class="tag-clickable" data-tag="Routeur">Routeur</span>
             </div>
           </article>
 
@@ -340,7 +340,7 @@
             <h3 class="project-card__title">Serveur Linux – Docker & Samba</h3>
             <p class="project-card__desc">Déploiement Debian avec conteneurisation Docker, partage Samba et virtualisation via VirtualBox / Proxmox.</p>
             <div class="project-card__tags">
-              <span>Debian</span><span>Docker</span><span>Samba</span><span>Proxmox</span>
+              <span class="tag-clickable" data-tag="Debian">Debian</span><span class="tag-clickable" data-tag="Docker">Docker</span><span class="tag-clickable" data-tag="Samba">Samba</span><span class="tag-clickable" data-tag="Proxmox">Proxmox</span>
             </div>
           </article>
 
@@ -354,7 +354,7 @@
             <h3 class="project-card__title">Audit & Tests de Sécurité</h3>
             <p class="project-card__desc">Tests de pénétration en environnement contrôlé : NMAP, payloads Windows, campagne phishing et Social Engineering Toolkit.</p>
             <div class="project-card__tags">
-              <span>Kali</span><span>NMAP</span><span>SET</span><span>Phishing</span>
+              <span class="tag-clickable" data-tag="Kali">Kali</span><span class="tag-clickable" data-tag="NMAP">NMAP</span><span class="tag-clickable" data-tag="SET">SET</span><span class="tag-clickable" data-tag="Phishing">Phishing</span>
             </div>
           </article>
 
@@ -368,7 +368,7 @@
             <h3 class="project-card__title">Active Directory</h3>
             <p class="project-card__desc">Déploiement et administration d'un AD sous Windows Server 2016 : utilisateurs, GPO, DNS, DHCP et gestion des droits.</p>
             <div class="project-card__tags">
-              <span>WS 2016</span><span>AD</span><span>GPO</span><span>DNS/DHCP</span>
+              <span class="tag-clickable" data-tag="WS 2016">WS 2016</span><span class="tag-clickable" data-tag="AD">AD</span><span class="tag-clickable" data-tag="GPO">GPO</span><span class="tag-clickable" data-tag="DNS/DHCP">DNS/DHCP</span>
             </div>
           </article>
 
@@ -382,11 +382,19 @@
             <h3 class="project-card__title">Développement Web</h3>
             <p class="project-card__desc">Sites et applications dynamiques PHP/MySQL dans le cadre du BTS, gestion BDD via phpMyAdmin, déploiement WAMP.</p>
             <div class="project-card__tags">
-              <span>HTML/CSS</span><span>PHP</span><span>MySQL</span><span>WAMP</span>
+              <span class="tag-clickable" data-tag="HTML/CSS">HTML/CSS</span><span class="tag-clickable" data-tag="PHP">PHP</span><span class="tag-clickable" data-tag="MySQL">MySQL</span><span class="tag-clickable" data-tag="WAMP">WAMP</span>
             </div>
           </article>
 
         </div>
+        
+        <!-- Insérer juste après la fin de la grille des cartes de projets -->
+        <div class="projects__more">
+          <a href="https://ayoubhry.github.io/docs" class="btn btn--primary" target="_blank">
+            <i class="fa-solid fa-book"></i> Ma Documentation
+          </a>
+        </div>
+        
       </div>
     </section>
 
@@ -536,6 +544,24 @@
   <button class="assistant" id="assistant" aria-label="Cliquer pour interagir">
     <img src="assets/img/assistant.gif" alt="Assistant animé" draggable="false" />
   </button>
+
+  <!-- ── TAG MODAL ──────────────────────────────────────── -->
+  <div id="tagModal" class="tag-modal" role="dialog" aria-modal="true" aria-labelledby="tagModalTitle" aria-hidden="true">
+    <div class="tag-modal__backdrop"></div>
+    <div class="tag-modal__panel">
+      <button class="tag-modal__close" id="tagModalClose" aria-label="Fermer">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="tag-modal__icon-wrap" id="tagModalIconWrap">
+        <i id="tagModalIcon" class="fa-solid fa-circle-info"></i>
+      </div>
+      <h3 class="tag-modal__title" id="tagModalTitle">Titre</h3>
+      <p class="tag-modal__desc" id="tagModalDesc">Description</p>
+      <a id="tagModalBtn" href="#" target="_blank" rel="noopener" class="btn btn--primary tag-modal__cta">
+        <i class="fa-brands fa-github"></i> Voir le dépôt
+      </a>
+    </div>
+  </div>
 
   <!-- ── SCRIPTS ──────────────────────────────────────── -->
   <script src="js/main.js"></script>
