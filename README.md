@@ -23,12 +23,18 @@ Portfolio one-page développé en **HTML / CSS / JavaScript Vanilla**, déployé
 
 ```
 portfolio/
-├── index.html
-├── css/style.css
-├── js/main.js
-├── assets/img/photo.jpg
-│   └── cv/CV_Houraoui.pdf
+├── assets/
 │   └── audio/background.mp3
+│   └── cv/CV_Houraoui.pdf
+│   └── img/
+│        └── assistant.gif
+│        └── photo.jpg
+│        └── portfolio.jpg
+├── css/
+│   └── style.css
+├── js/
+│   └── main.js
+├── index.html
 └── README.md
 ```
 
