@@ -24,8 +24,10 @@ Portfolio one-page développé en **HTML / CSS / JavaScript Vanilla**, déployé
 ```
 portfolio/
 ├── assets/
-│   └── audio/background.mp3
-│   └── cv/CV_Houraoui.pdf
+│   └── audio/
+│         └── background.mp3
+│   └── cv/
+│       └── CV_Houraoui.pdf
 │   └── img/
 │        └── assistant.gif
 │        └── photo.jpg
