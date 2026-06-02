@@ -3,6 +3,10 @@
 > Portfolio personnel · BTS SIO option SISR · Caen
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-live-00c8ff?style=flat-square&logo=github)](https://ayoubhry.github.io/portfolio)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](#)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](#)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](#)
 [![BTS SIO](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://fr.linkedin.com/in/ayoub-houraoui)
 
 ---
