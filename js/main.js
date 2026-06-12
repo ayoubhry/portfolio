@@ -441,3 +441,125 @@
 
 })();
 
+
+/* ─────────────────────────────────────────────────────────────
+   BADGE 3D TROPHY TILT
+   Tracks mouse position over each .cert-badge-wrap and applies
+   a live rotateX/Y + golden shimmer, mimicking a Smash Bros trophy.
+───────────────────────────────────────────────────────────── */
+(function initBadgeTilt() {
+  const MAX_TILT = 25;
+  const MAX_GLOW = 22;
+
+  document.querySelectorAll('.cert-badge-wrap').forEach(wrap => {
+    const img = wrap.querySelector('.cert-badge-img');
+    if (!img) return;
+
+    // Inject shine overlay (already styled via CSS class)
+    const shine = document.createElement('span');
+    shine.className = 'cert-badge-shine';
+    wrap.appendChild(shine);
+
+    function onMove(e) {
+      const rect = wrap.getBoundingClientRect();
+      const cx   = rect.left + rect.width  / 2;
+      const cy   = rect.top  + rect.height / 2;
+      const dx   = Math.max(-1, Math.min(1, (e.clientX - cx) / (rect.width  / 2)));
+      const dy   = Math.max(-1, Math.min(1, (e.clientY - cy) / (rect.height / 2)));
+
+      const rotY  =  dx * MAX_TILT;
+      const rotX  = -dy * MAX_TILT;
+      const glowX =  dx * 10;
+      const glowY =  dy * 10;
+
+      img.style.transform =
+        `rotateY(${rotY}deg) rotateX(${rotX}deg) scale(1.1)`;
+      img.style.filter =
+        `brightness(1.13) drop-shadow(${glowX}px ${glowY}px ${MAX_GLOW}px rgba(255,200,60,.7))`;
+      img.style.boxShadow =
+        `${-rotY * .5}px ${rotX * .5}px 30px rgba(0,0,0,.28),
+         0 0 0 2px rgba(255,190,50,.35)`;
+
+      // Shimmer highlight follows cursor
+      const shineX = 50 + dx * 38;
+      const shineY = 50 + dy * 38;
+      shine.style.backgroundImage =
+        `radial-gradient(circle at ${shineX}% ${shineY}%,
+           rgba(255,255,255,.6)  0%,
+           rgba(255,255,255,.12) 45%,
+           transparent 68%)`;
+      shine.style.opacity = '1';
+    }
+
+    function onLeave() {
+      img.style.transform = '';
+      img.style.filter    = '';
+      img.style.boxShadow = '';
+      shine.style.opacity = '0';
+    }
+
+    wrap.addEventListener('mousemove',  onMove);
+    wrap.addEventListener('mouseleave', onLeave);
+
+    // Touch: static tilt on tap
+    wrap.addEventListener('touchstart', () => {
+      img.style.transform =
+        `rotateY(-18deg) rotateX(10deg) scale(1.08)`;
+      img.style.filter =
+        `brightness(1.15) drop-shadow(-5px 8px 18px rgba(255,200,60,.65))`;
+      shine.style.backgroundImage =
+        `radial-gradient(circle at 35% 35%,
+           rgba(255,255,255,.55) 0%, transparent 65%)`;
+      shine.style.opacity = '1';
+    }, { passive: true });
+    wrap.addEventListener('touchend', onLeave);
+  });
+})();
+
+/* ─────────────────────────────────────────────────────────────
+   CISCO CERT 3D TILT (documents réels)
+───────────────────────────────────────────────────────────── */
+(function initCiscoCertTilt() {
+  const MAX_TILT = 22;
+
+  document.querySelectorAll('.cisco-cert-wrap').forEach(wrap => {
+    const img   = wrap.querySelector('.cisco-cert-img');
+    const shine = wrap.querySelector('.cisco-cert-shine');
+    if (!img) return;
+
+    wrap.addEventListener('mousemove', e => {
+      const rect = wrap.getBoundingClientRect();
+      const dx = (e.clientX - rect.left)  / rect.width  - 0.5;
+      const dy = (e.clientY - rect.top)   / rect.height - 0.5;
+      const rotY =  dx * MAX_TILT;
+      const rotX = -dy * MAX_TILT;
+      img.style.transform = `rotateY(${rotY}deg) rotateX(${rotX}deg) scale(1.04)`;
+      const sx = 50 + dx * 40;
+      const sy = 50 + dy * 40;
+      shine.style.backgroundImage = `radial-gradient(circle at ${sx}% ${sy}%,
+        rgba(255,255,255,.55) 0%, transparent 65%)`;
+      shine.style.opacity = '1';
+    });
+
+    wrap.addEventListener('mouseleave', () => {
+      img.style.transform   = 'rotateY(0deg) rotateX(0deg) scale(1)';
+      shine.style.opacity   = '0';
+    });
+
+    // Touch support
+    wrap.addEventListener('touchstart', e => {
+      const t    = e.touches[0];
+      const rect = wrap.getBoundingClientRect();
+      const dx   = (t.clientX - rect.left)  / rect.width  - 0.5;
+      const dy   = (t.clientY - rect.top)   / rect.height - 0.5;
+      img.style.transform = `rotateY(${dx*MAX_TILT}deg) rotateX(${-dy*MAX_TILT}deg) scale(1.04)`;
+      shine.style.backgroundImage = `radial-gradient(circle at ${50+dx*40}% ${50+dy*40}%,
+        rgba(255,255,255,.55) 0%, transparent 65%)`;
+      shine.style.opacity = '1';
+    }, { passive: true });
+    wrap.addEventListener('touchend', () => {
+      img.style.transform = 'rotateY(0deg) rotateX(0deg) scale(1)';
+      shine.style.opacity = '0';
+    });
+  });
+})();

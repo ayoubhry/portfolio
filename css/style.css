@@ -677,46 +677,485 @@ section { padding: 5rem 0; }
 /* ─── 8. CERTIFICATIONS ─────────────────────────────── */
 #certifications { background:var(--surface); }
 
-.certs__grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+/* ── Carousel wrapper ── */
+/* ── Certifications: groupes par catégorie ── */
+.certs-group {
+  margin-top: 2.5rem;
+}
 
+.certs-group__title {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  font-family: var(--ff-head);
+  font-size: .85rem;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  margin-bottom: 1rem;
+}
+
+.certs-group__icon {
+  width: 28px; height: 28px;
+  border-radius: var(--r);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .8rem; flex-shrink: 0;
+}
+.certs-group__icon--blue   { background: var(--c-blue-bg);   color: var(--c-blue); }
+.certs-group__icon--green  { background: var(--c-green-bg);  color: var(--c-green); }
+.certs-group__icon--orange { background: rgba(255,106,0,.12); color: #f97316; }
+
+/* Grid 2 colonnes pour diplômes et certifications */
+.certs-group__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* Section badges — pas de cadre, centré */
+.certs-group__badges {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.cert-badge-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  text-align: center;
+  max-width: 260px;
+}
+
+/* Badge info (texte sous le badge) */
+.cert-badge-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .4rem;
+}
+.cert-badge-info h3 {
+  font-family: var(--ff-head);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: .2rem 0 0;
+}
+.cert-badge-info p {
+  font-size: .85rem;
+  color: var(--text-2);
+  line-height: 1.5;
+}
+
+/* ── 3D Trophy wrap ── */
+.cert-badge-wrap {
+  position: relative;
+  perspective: 600px;
+  width: 170px; height: 170px;
+  flex-shrink: 0;
+}
+.cert-badge-wrap::after {
+  content: '';
+  position: absolute;
+  bottom: -10px; left: 50%;
+  transform: translateX(-50%) scaleX(.7);
+  width: 130px; height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center,
+    rgba(255,180,50,.5) 0%, transparent 72%);
+  opacity: 0;
+  transition: opacity .35s ease, transform .35s ease;
+  pointer-events: none;
+}
+.cert-badge-wrap:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* ── Badge image ── */
+.cert-badge-img {
+  width: 170px; height: 170px;
+  border-radius: 22px;
+  object-fit: contain; display: block;
+  transform-style: preserve-3d;
+  transform: rotateY(0deg) rotateX(0deg) scale(1);
+  transition:
+    transform .35s cubic-bezier(.23,1,.32,1),
+    box-shadow .35s cubic-bezier(.23,1,.32,1),
+    filter .35s ease;
+  box-shadow: 0 6px 24px rgba(0,0,0,.18);
+  filter: brightness(1);
+  cursor: default;
+  will-change: transform;
+}
+.cert-badge-wrap:hover .cert-badge-img {
+  transform: rotateY(-20deg) rotateX(10deg) scale(1.1);
+  box-shadow:
+    -8px 10px 28px rgba(0,0,0,.25),
+    5px -4px 14px rgba(255,220,100,.4),
+    0 0 0 2px rgba(255,180,50,.3);
+  filter: brightness(1.12) drop-shadow(0 0 14px rgba(255,200,60,.6));
+}
+[data-theme="dark"] .cert-badge-wrap:hover .cert-badge-img {
+  box-shadow:
+    -8px 10px 28px rgba(0,0,0,.5),
+    5px -4px 14px rgba(255,220,100,.55),
+    0 0 0 2px rgba(255,180,50,.4);
+  filter: brightness(1.2) drop-shadow(0 0 18px rgba(255,200,60,.75));
+}
+
+/* Golden shimmer overlay injected by JS */
+.cert-badge-shine {
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .3s ease;
+  mix-blend-mode: overlay;
+}
+
+/* ── Cert cards (diplômes / certifs) ── */
 .cert-card {
-  display:flex; align-items:flex-start; gap:1rem;
-  background:var(--bg); border:1.5px solid var(--border);
-  border-radius:var(--r-lg); padding:1.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem 1.4rem;
+  border-radius: var(--r-lg);
+  border: 1.5px solid var(--border);
+  background: var(--surface-2);
   transition: all var(--t);
+  min-width: 0;
 }
-.cert-card:hover { border-color:var(--accent); transform:translateY(-2px); box-shadow:var(--shadow-md); }
-.cert-card--featured { background:var(--accent-light); border-color:rgba(37,99,235,.25); }
-[data-theme="dark"] .cert-card--featured { background:var(--c-blue-bg); }
-
-.cert-icon {
-  width:44px; height:44px; border-radius:var(--r);
-  display:flex; align-items:center; justify-content:center;
-  font-size:1.1rem; flex-shrink:0;
+.cert-card:hover {
+  border-color: var(--c-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0,0,0,.1);
 }
-.cert-icon--blue   { background:var(--c-blue-bg);   color:var(--c-blue); }
-[data-theme="dark"] .cert-icon--blue { background:rgba(59,130,246,.2); }
-.cert-icon--green  { background:var(--c-green-bg);  color:var(--c-green); }
-.cert-icon--red    { background:var(--c-red-bg);    color:var(--c-red); }
-.cert-icon--yellow { background:var(--c-yellow-bg); color:var(--c-yellow); }
-
-.cert-card__body { flex:1; }
-.cert-card__body h3 { font-family:var(--ff-head); font-size:1rem; font-weight:700; color:var(--text); margin:.25rem 0; }
-.cert-card__body p  { font-size:.85rem; color:var(--text-2); line-height:1.5; }
-
-.cert-status {
-  font-size:.7rem; font-weight:700; letter-spacing:.08em;
-  text-transform:uppercase; padding:2px 8px; border-radius:100px;
+.cert-card--featured {
+  border-color: rgba(37,99,235,.35);
+  background: linear-gradient(135deg, var(--c-blue-bg) 0%, var(--surface-2) 70%);
 }
-.cert-status--current { background:rgba(37,99,235,.1); color:var(--accent); }
-.cert-status--done    { background:rgba(22,163,74,.1);  color:var(--c-green); }
-
-.cert-school { margin-top:.35rem; font-size:.8rem !important; color:var(--text-3) !important; }
-.cert-school i { margin-right:4px; }
-
+.cert-card__left { flex-shrink: 0; }
+.cert-card__body { flex: 1; min-width: 0; }
+.cert-card__body h3 {
+  font-family: var(--ff-head);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: .2rem 0 .3rem;
+}
+.cert-card__body p {
+  font-size: .85rem;
+  color: var(--text-2);
+  line-height: 1.5;
+  margin: 0;
+}
+.cert-school {
+  font-size: .8rem;
+  color: var(--text-3);
+  margin-top: .3rem !important;
+}
 .cert-year {
-  font-size:.78rem; font-weight:700; color:var(--text-3);
-  white-space:nowrap; padding-top:2px; flex-shrink:0;
+  font-family: var(--ff-head);
+  font-size: .8rem;
+  font-weight: 700;
+  color: var(--text-3);
+  white-space: nowrap;
+  flex-shrink: 0;
+  align-self: flex-start;
+  margin-top: .1rem;
+}
+.cert-year--id {
+  font-family: var(--ff-mono, monospace);
+  font-size: .68rem;
+  letter-spacing: .04em;
+}
+.cert-icon {
+  width: 38px; height: 38px;
+  border-radius: var(--r);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; flex-shrink: 0;
+}
+.cert-icon--blue   { background: var(--c-blue-bg);            color: var(--c-blue); }
+.cert-icon--green  { background: var(--c-green-bg);           color: var(--c-green); }
+.cert-icon--red    { background: rgba(220,38,38,.1);          color: #dc2626; }
+.cert-icon--yellow { background: rgba(234,179,8,.12);         color: #ca8a04; }
+.cert-icon--cisco-sm { background: rgba(0,114,197,.12); color: #0072c5; }
+.cert-status {
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .05em;
+  padding: .15rem .55rem;
+  border-radius: 99px;
+  text-transform: uppercase;
+}
+.cert-status--done    { background: var(--c-green-bg); color: var(--c-green); }
+.cert-status--current { background: var(--c-blue-bg);  color: var(--c-blue); }
+
+/* ── Catégories verticales ── */
+.certs-category {
+  margin-top: 3rem;
+}
+.certs-category__title {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  font-family: var(--ff-head);
+  font-size: .85rem;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  margin-bottom: 1.25rem;
+}
+.certs-category__icon {
+  width: 28px; height: 28px;
+  border-radius: var(--r);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .8rem; flex-shrink: 0;
+}
+.certs-category__icon--blue   { background: var(--c-blue-bg);           color: var(--c-blue); }
+.certs-category__icon--green  { background: var(--c-green-bg);          color: var(--c-green); }
+.certs-category__icon--orange { background: rgba(255,106,0,.12);        color: #f97316; }
+.certs-category__icon--cisco  { background: rgba(0,114,197,.12);        color: #0072c5; }
+
+.certs-category__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* ── Badges row (inchangé) ── */
+.certs-badges-row {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+/* ── Cisco certs grid (documents 3D) ── */
+.cisco-certs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem 1.5rem;
+}
+
+/* Wrapper de chaque certificat */
+.cisco-cert-3d {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .9rem;
+  text-align: center;
+}
+
+/* Le wrap 3D (perspective) */
+.cisco-cert-wrap {
+  position: relative;
+  perspective: 700px;
+  width: 100%;
+  flex-shrink: 0;
+}
+.cisco-cert-wrap::after {
+  content: '';
+  position: absolute;
+  bottom: -10px; left: 50%;
+  transform: translateX(-50%) scaleX(.7);
+  width: 70%; height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center,
+    rgba(0,114,197,.45) 0%, transparent 72%);
+  opacity: 0;
+  transition: opacity .35s ease, transform .35s ease;
+  pointer-events: none;
+}
+.cisco-cert-wrap:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* L'image du certificat */
+.cisco-cert-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+  object-fit: contain;
+  transform-style: preserve-3d;
+  transform: rotateY(0deg) rotateX(0deg) scale(1);
+  transition:
+    transform .38s cubic-bezier(.23,1,.32,1),
+    box-shadow .38s cubic-bezier(.23,1,.32,1),
+    filter .3s ease;
+  box-shadow:
+    0 4px 20px rgba(0,0,0,.15),
+    0 0 0 1.5px rgba(0,114,197,.12);
+  cursor: default;
+  will-change: transform;
+}
+.cisco-cert-wrap:hover .cisco-cert-img {
+  transform: rotateY(-18deg) rotateX(8deg) scale(1.04);
+  box-shadow:
+    -10px 12px 32px rgba(0,0,0,.28),
+    6px -5px 18px rgba(0,180,235,.3),
+    0 0 0 2px rgba(0,114,197,.35);
+  filter: brightness(1.08) drop-shadow(0 0 14px rgba(0,180,235,.4));
+}
+[data-theme="dark"] .cisco-cert-wrap:hover .cisco-cert-img {
+  box-shadow:
+    -10px 12px 32px rgba(0,0,0,.5),
+    6px -5px 18px rgba(0,188,235,.5),
+    0 0 0 2px rgba(0,114,197,.5);
+  filter: brightness(1.15) drop-shadow(0 0 18px rgba(0,188,235,.65));
+}
+
+/* Overlay shimmer (injecté par JS) */
+.cisco-cert-shine {
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .3s ease;
+  mix-blend-mode: overlay;
+}
+
+/* Infos sous la carte */
+.cisco-cert-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .3rem;
+}
+.cisco-cert-info h4 {
+  font-family: var(--ff-head);
+  font-size: .92rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: .2rem 0 0;
+  line-height: 1.35;
+}
+.cisco-cert-info p {
+  font-size: .8rem;
+  color: var(--text-2);
+  line-height: 1.5;
+  margin: 0;
+}
+.cisco-cert-id {
+  font-size: .68rem;
+  font-family: var(--ff-mono, monospace);
+  color: var(--text-3);
+  letter-spacing: .05em;
+  margin-top: .1rem;
+}
+
+/* ── Cisco Networking Academy (legacy icon class) ── */
+.certs-group__icon--cisco { background: rgba(0,114,197,.12); color: #0072c5; }
+
+.cisco-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.cisco-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  padding: 1.25rem 1.4rem 1.1rem;
+  border-radius: var(--r-lg);
+  border: 1.5px solid rgba(0,114,197,.18);
+  background: linear-gradient(135deg,
+    rgba(0,114,197,.04) 0%,
+    var(--bg) 60%);
+  transition: all var(--t);
+  overflow: hidden;
+}
+.cisco-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: linear-gradient(180deg, #0072c5, #00bceb);
+  border-radius: 4px 0 0 4px;
+}
+.cisco-card:hover {
+  border-color: rgba(0,114,197,.45);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0,114,197,.12);
+}
+[data-theme="dark"] .cisco-card {
+  background: linear-gradient(135deg, rgba(0,114,197,.08) 0%, var(--bg) 60%);
+}
+
+.cisco-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cisco-card__icon {
+  width: 36px; height: 36px;
+  border-radius: var(--r);
+  background: rgba(0,114,197,.12);
+  color: #0072c5;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .9rem;
+  flex-shrink: 0;
+}
+[data-theme="dark"] .cisco-card__icon { background: rgba(0,188,235,.15); color: #00bceb; }
+
+.cisco-card__date {
+  font-size: .72rem;
+  font-weight: 600;
+  color: var(--text-3);
+  letter-spacing: .04em;
+}
+
+.cisco-card__title {
+  font-family: var(--ff-head);
+  font-size: .95rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.35;
+  margin: 0;
+}
+
+.cisco-card__desc {
+  font-size: .8rem;
+  color: var(--text-2);
+  line-height: 1.5;
+  margin: 0;
+  flex: 1;
+}
+
+.cisco-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: .5rem;
+  border-top: 1px solid var(--border);
+}
+
+.cisco-card__id {
+  font-size: .68rem;
+  color: var(--text-3);
+  font-family: var(--ff-mono, monospace);
+  letter-spacing: .04em;
+}
+
+/* "Voir sur LinkedIn" button below certs grid */
+.certs__more {
+  display:flex; justify-content:center; flex-wrap:wrap;
+  gap:.75rem;
+  margin-top:2.5rem;
 }
 
 /* ─── 9. CONTACT ─────────────────────────────────────── */
@@ -1074,7 +1513,9 @@ footer {
   /* Grilles */
   .projects__grid     { grid-template-columns:1fr; }
   .project-card--wide { grid-column:span 1; }
-  .certs__grid        { grid-template-columns:1fr; }
+  /* Certifications groupes mobile */
+  .certs-category__grid { grid-template-columns: 1fr; }
+  .cisco-certs-grid     { grid-template-columns: 1fr 1fr; }
   .about__photo-wrap  { flex-direction:column; align-items:flex-start; }
   .about__photo       { width: 100%; max-width: 220px; }
 
@@ -1097,8 +1538,11 @@ footer {
   .about__photo     { max-width: 100%; width: 100%; }
 
   /* Certifications */
-  .cert-card  { flex-direction:column; }
-  .cert-year  { display:none; }
+  .certs-category__grid { grid-template-columns: 1fr; }
+  .certs-badges-row     { gap: 2rem; }
+  .cisco-certs-grid     { grid-template-columns: 1fr; }
+  .cert-card            { flex-direction:column; }
+  .cert-year            { display:none; }
 
   /* Contact */
   .contact__cta { padding: 1.25rem; }

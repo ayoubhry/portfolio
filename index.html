@@ -280,7 +280,7 @@
                 <span class="about__stat-l">Stage réalisé</span>
               </div>
               <div class="about__stat">
-                <span class="about__stat-n">2</span>
+                <span class="about__stat-n">4</span>
                 <span class="about__stat-l">Certifications</span>
               </div>
             </div>
@@ -403,66 +403,231 @@
       <div class="container">
         <div class="section-header" data-animate>
           <p class="section-label">Certifications</p>
-          <h2 class="section-title">Diplômes & Certifications</h2>
+          <h2 class="section-title">Diplômes &amp; Certifications</h2>
         </div>
 
-        <div class="certs__grid">
+        <!-- ════════════════════════════════════
+             CATÉGORIE 1 — DIPLÔMES
+        ═══════════════════════════════════════ -->
+        <div class="certs-category" data-animate>
+          <h3 class="certs-category__title">
+            <span class="certs-category__icon certs-category__icon--blue"><i class="fa-solid fa-graduation-cap"></i></span>
+            Diplômes
+          </h3>
+          <div class="certs-category__grid">
 
-          <div class="cert-card cert-card--featured" data-animate>
-            <div class="cert-card__left">
-              <div class="cert-icon cert-icon--blue"><i class="fa-solid fa-graduation-cap"></i></div>
+            <div class="cert-card cert-card--featured">
+              <div class="cert-card__left">
+                <div class="cert-icon cert-icon--blue"><i class="fa-solid fa-graduation-cap"></i></div>
+              </div>
+              <div class="cert-card__body">
+                <span class="cert-status cert-status--current">En cours</span>
+                <h3>BTS SIO – SISR</h3>
+                <p>Services Informatiques aux Organisations · Option SISR</p>
+                <p class="cert-school"><i class="fa-solid fa-school"></i> Lycée Jean Rostand, Caen</p>
+              </div>
+              <div class="cert-year">2025 – 2027</div>
             </div>
-            <div class="cert-card__body">
-              <span class="cert-status cert-status--current">En cours</span>
-              <h3>BTS SIO – SISR</h3>
-              <p>Services Informatiques aux Organisations · Option SISR</p>
-              <p class="cert-school"><i class="fa-solid fa-school"></i> Lycée Jean Rostand, Caen</p>
+
+            <div class="cert-card">
+              <div class="cert-card__left">
+                <div class="cert-icon cert-icon--green"><i class="fa-solid fa-certificate"></i></div>
+              </div>
+              <div class="cert-card__body">
+                <span class="cert-status cert-status--done">Obtenu · Juin 2025</span>
+                <h3>Baccalauréat Général</h3>
+                <p>Mathématiques &amp; Sciences de l'Ingénieur</p>
+                <p class="cert-school"><i class="fa-solid fa-school"></i> Lycée Alain, Alençon</p>
+              </div>
+              <div class="cert-year">2025</div>
             </div>
-            <div class="cert-year">2025 – 2027</div>
+
           </div>
-
-          <div class="cert-card" data-animate data-delay="100">
-            <div class="cert-card__left">
-              <div class="cert-icon cert-icon--green"><i class="fa-solid fa-certificate"></i></div>
-            </div>
-            <div class="cert-card__body">
-              <span class="cert-status cert-status--done">Obtenu · Juin 2025</span>
-              <h3>Baccalauréat Général</h3>
-              <p>Mathématiques & Sciences de l'Ingénieur</p>
-              <p class="cert-school"><i class="fa-solid fa-school"></i> Lycée Alain, Alençon</p>
-            </div>
-            <div class="cert-year">2025</div>
-          </div>
-
-          <div class="cert-card" data-animate data-delay="200">
-            <div class="cert-card__left">
-              <div class="cert-icon cert-icon--red"><i class="fa-solid fa-shield-halved"></i></div>
-            </div>
-            <div class="cert-card__body">
-              <span class="cert-status cert-status--done">Obtenu</span>
-              <h3>Passe ton Hack d'Abord</h3>
-              <p>Explorateur Cybersécurité · Fondamentaux attaque & défense</p>
-            </div>
-            <div class="cert-year">2025</div>
-          </div>
-
-          <div class="cert-card" data-animate data-delay="300">
-            <div class="cert-card__left">
-              <div class="cert-icon cert-icon--yellow"><i class="fa-solid fa-star"></i></div>
-            </div>
-            <div class="cert-card__body">
-              <span class="cert-status cert-status--done">Obtenu</span>
-              <h3>Certification PIX</h3>
-              <p>Compétences numériques nationales · 5 domaines</p>
-            </div>
-            <div class="cert-year">2024</div>
-          </div>
-
         </div>
+
+        <!-- ════════════════════════════════════
+             CATÉGORIE 2 — CERTIFICATIONS (PIX, Hack)
+        ═══════════════════════════════════════ -->
+        <div class="certs-category" data-animate>
+          <h3 class="certs-category__title">
+            <span class="certs-category__icon certs-category__icon--green"><i class="fa-solid fa-certificate"></i></span>
+            Certifications
+          </h3>
+          <div class="certs-category__grid">
+
+            <div class="cert-card">
+              <div class="cert-card__left">
+                <div class="cert-icon cert-icon--red"><i class="fa-solid fa-shield-halved"></i></div>
+              </div>
+              <div class="cert-card__body">
+                <span class="cert-status cert-status--done">Obtenu</span>
+                <h3>Passe ton Hack d'Abord</h3>
+                <p>Explorateur Cybersécurité · Fondamentaux attaque &amp; défense</p>
+              </div>
+              <div class="cert-year">2025</div>
+            </div>
+
+            <div class="cert-card">
+              <div class="cert-card__left">
+                <div class="cert-icon cert-icon--yellow"><i class="fa-solid fa-star"></i></div>
+              </div>
+              <div class="cert-card__body">
+                <span class="cert-status cert-status--done">Obtenu</span>
+                <h3>Certification PIX</h3>
+                <p>Compétences numériques nationales · 5 domaines</p>
+              </div>
+              <div class="cert-year">2024</div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ════════════════════════════════════
+             CATÉGORIE 3 — CISCO (Badges Credly)
+        ═══════════════════════════════════════ -->
+        <div class="certs-category" data-animate>
+          <h3 class="certs-category__title">
+            <span class="certs-category__icon certs-category__icon--orange"><i class="fa-solid fa-medal"></i></span>
+            Badges Cisco
+          </h3>
+          <div class="certs-badges-row">
+
+            <div class="cert-badge-item">
+              <div class="cert-badge-wrap">
+                <img
+                  src="https://images.credly.com/size/340x340/images/474a03c6-b5e1-44df-b313-adf0fed6c531/blob"
+                  alt="IT Customer Support Basics – Cisco"
+                  class="cert-badge-img"
+                  width="340" height="340" loading="lazy"
+                />
+              </div>
+              <div class="cert-badge-info">
+                <span class="cert-status cert-status--done">Délivré le 12 juin 2026 · Cisco</span>
+                <h3>IT Customer Support Basics</h3>
+                <p>Help desk, service client &amp; dépannage à distance · Badge vérifié</p>
+              </div>
+            </div>
+
+            <div class="cert-badge-item">
+              <div class="cert-badge-wrap">
+                <img
+                  src="https://images.credly.com/size/340x340/images/09b6d58c-763a-4b40-aea1-787d8f46bbcd/Intro2PT.png"
+                  alt="Introduction to Packet Tracer – Cisco"
+                  class="cert-badge-img"
+                  width="340" height="340" loading="lazy"
+                />
+              </div>
+              <div class="cert-badge-info">
+                <span class="cert-status cert-status--done">Délivré le 11 juin 2026 · Cisco</span>
+                <h3>Introduction to Packet Tracer</h3>
+                <p>Modélisation de réseaux IP &amp; systèmes IoT avec Cisco Packet Tracer · Badge vérifié</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ════════════════════════════════════
+             CATÉGORIE 4 — COURS CISCO (Certificats PDF 3D)
+        ═══════════════════════════════════════ -->
+        <div class="certs-category" data-animate>
+          <h3 class="certs-category__title">
+            <span class="certs-category__icon certs-category__icon--cisco"><i class="fa-solid fa-network-wired"></i></span>
+            Cours Cisco Networking Academy
+          </h3>
+          <div class="cisco-certs-grid">
+
+            <!-- Cert 1 -->
+            <div class="cisco-cert-3d">
+              <div class="cisco-cert-wrap">
+                <img src="assets/certs/cert-premiers-pas-1.png" alt="Premiers pas avec Cisco Packet Tracer" class="cisco-cert-img" loading="lazy" />
+                <span class="cisco-cert-shine"></span>
+              </div>
+              <div class="cisco-cert-info">
+                <span class="cert-status cert-status--done">Réussi · 11 juin 2026</span>
+                <h4>Premiers pas avec Cisco Packet Tracer</h4>
+                <p>Prise en main de l'environnement Packet Tracer · Simulation réseau</p>
+                <span class="cisco-cert-id">ID : be20510d</span>
+              </div>
+            </div>
+
+            <!-- Cert 2 -->
+            <div class="cisco-cert-3d">
+              <div class="cisco-cert-wrap">
+                <img src="assets/certs/cert-introduction-1.png" alt="Introduction to Packet Tracer" class="cisco-cert-img" loading="lazy" />
+                <span class="cisco-cert-shine"></span>
+              </div>
+              <div class="cisco-cert-info">
+                <span class="cert-status cert-status--done">Réussi · 11 juin 2026</span>
+                <h4>Introduction to Packet Tracer</h4>
+                <p>Examen de validation · Concepts fondamentaux de simulation réseau</p>
+                <span class="cisco-cert-id">ID : cb7a512c</span>
+              </div>
+            </div>
+
+            <!-- Cert 3 -->
+            <div class="cisco-cert-3d">
+              <div class="cisco-cert-wrap">
+                <img src="assets/certs/cert-exploration-1.png" alt="Exploration des Réseaux" class="cisco-cert-img" loading="lazy" />
+                <span class="cisco-cert-shine"></span>
+              </div>
+              <div class="cisco-cert-info">
+                <span class="cert-status cert-status--done">Réussi · 11 juin 2026</span>
+                <h4>Exploration des Réseaux avec Packet Tracer</h4>
+                <p>Topologies réseau, adressage IP, protocoles de routage</p>
+                <span class="cisco-cert-id">ID : 73acb964</span>
+              </div>
+            </div>
+
+            <!-- Cert 4 -->
+            <div class="cisco-cert-3d">
+              <div class="cisco-cert-wrap">
+                <img src="assets/certs/cert-iot-1.png" alt="Explorer l'IoT avec Cisco Packet Tracer" class="cisco-cert-img" loading="lazy" />
+                <span class="cisco-cert-shine"></span>
+              </div>
+              <div class="cisco-cert-info">
+                <span class="cert-status cert-status--done">Réussi · 11 juin 2026</span>
+                <h4>Explorer l'IoT avec Cisco Packet Tracer</h4>
+                <p>Modélisation de systèmes IoT · Capteurs, actionneurs &amp; automatisation</p>
+                <span class="cisco-cert-id">ID : dedf838b</span>
+              </div>
+            </div>
+
+            <!-- Cert 5 -->
+            <div class="cisco-cert-3d">
+              <div class="cisco-cert-wrap">
+                <img src="assets/certs/cert-itsupport-1.png" alt="IT Customer Support Basics" class="cisco-cert-img" loading="lazy" />
+                <span class="cisco-cert-shine"></span>
+              </div>
+              <div class="cisco-cert-info">
+                <span class="cert-status cert-status--done">Réussi · 12 juin 2026</span>
+                <h4>IT Customer Support Basics</h4>
+                <p>Help desk, service client &amp; dépannage à distance</p>
+                <span class="cisco-cert-id">ID : 66784afb</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Liens Credly / LinkedIn -->
+        <div class="certs__more" data-animate>
+          <a href="https://www.credly.com/users/ayoub-houraoui/badges"
+             target="_blank" rel="noopener"
+             class="btn btn--outline">
+            <i class="fa-solid fa-medal"></i>&nbsp; Voir tous mes badges Credly
+          </a>
+          <a href="https://www.linkedin.com/in/ayoub-houraoui/details/certifications/"
+             target="_blank" rel="noopener"
+             class="btn btn--outline">
+            <i class="fa-brands fa-linkedin"></i>&nbsp; Certifications LinkedIn
+          </a>
+        </div>
+
       </div>
     </section>
 
-    <!-- ── CONTACT ──────────────────────────────────────── -->
+        <!-- ── CONTACT ──────────────────────────────────────── -->
     <section id="contact">
       <div class="container">
         <div class="contact__inner" data-animate>
