@@ -446,168 +446,219 @@
         </div>
 
         <!-- ════════════════════════════════════
-             CATÉGORIE 2 — CERTIFICATIONS (PIX, Hack)
+             CATÉGORIE 2 — CERTIFICATIONS (PIX, Hack + Cisco)
         ═══════════════════════════════════════ -->
         <div class="certs-category" data-animate>
           <h3 class="certs-category__title">
             <span class="certs-category__icon certs-category__icon--green"><i class="fa-solid fa-certificate"></i></span>
             Certifications
           </h3>
-          <div class="certs-category__grid">
 
-            <div class="cert-card">
-              <div class="cert-card__left">
-                <div class="cert-icon cert-icon--red"><i class="fa-solid fa-shield-halved"></i></div>
-              </div>
-              <div class="cert-card__body">
-                <span class="cert-status cert-status--done">Obtenu</span>
-                <h3>Passe ton Hack d'Abord</h3>
-                <p>Explorateur Cybersécurité · Fondamentaux attaque &amp; défense</p>
-              </div>
-              <div class="cert-year">2025</div>
-            </div>
+          <!-- Carrousel Certifications (PIX, Hack & Cisco) -->
+          <div class="cisco-carousel" id="ciscoCarousel">
+            <button class="cisco-carousel__btn cisco-carousel__btn--prev" id="carouselPrev" aria-label="Précédent">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
 
-            <div class="cert-card">
-              <div class="cert-card__left">
-                <div class="cert-icon cert-icon--yellow"><i class="fa-solid fa-star"></i></div>
-              </div>
-              <div class="cert-card__body">
-                <span class="cert-status cert-status--done">Obtenu</span>
-                <h3>Certification PIX</h3>
-                <p>Compétences numériques nationales · 5 domaines</p>
-              </div>
-              <div class="cert-year">2024</div>
-            </div>
+            <div class="cisco-carousel__track-wrap">
+              <div class="cisco-carousel__track" id="carouselTrack">
 
-          </div>
-        </div>
+                <!-- ── Slide 1 : Passe ton Hack d'Abord ── -->
+                <div class="cisco-carousel__slide">
+                  <div class="cisco-carousel__slide-inner">
+                    <div class="cisco-cert-wrap cisco-cert-wrap--icon">
+                      <div class="cisco-cert-icon-badge cisco-cert-icon-badge--red">
+                        <i class="fa-solid fa-shield-halved"></i>
+                      </div>
+                      <span class="cisco-cert-shine"></span>
+                    </div>
+                    <div class="cisco-cert-info">
+                      <span class="cert-status cert-status--done">Obtenu · 2025</span>
+                      <h4>Passe ton Hack d'Abord</h4>
+                      <p>Explorateur Cybersécurité · Fondamentaux attaque &amp; défense</p>
+                      <span class="cisco-cert-id">Certification nationale · France Cybersécurité</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ── Slide 2 : Certification PIX ── -->
+                <div class="cisco-carousel__slide">
+                  <div class="cisco-carousel__slide-inner">
+                    <div class="cisco-cert-wrap cisco-cert-wrap--icon">
+                      <div class="cisco-cert-icon-badge cisco-cert-icon-badge--yellow">
+                        <i class="fa-solid fa-star"></i>
+                      </div>
+                      <span class="cisco-cert-shine"></span>
+                    </div>
+                    <div class="cisco-cert-info">
+                      <span class="cert-status cert-status--done">Obtenu · 2024</span>
+                      <h4>Certification PIX</h4>
+                      <p>Compétences numériques nationales · 5 domaines</p>
+                      <span class="cisco-cert-id">Certification nationale · Ministère de l'Éducation</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ── Slide 3 : Cert Premiers pas ── -->
+                <div class="cisco-carousel__slide">
+                  <div class="cisco-carousel__slide-inner">
+                    <div class="cisco-cert-wrap">
+                      <img src="assets/certs/cert-premiers-pas-1.png" alt="Premiers pas avec Cisco Packet Tracer" class="cisco-cert-img" loading="lazy" />
+                      <span class="cisco-cert-shine"></span>
+                    </div>
+                    <div class="cisco-cert-info">
+                      <span class="cert-status cert-status--done">Réussi · 11 juin 2026</span>
+                      <h4>Premiers pas avec Cisco Packet Tracer</h4>
+                      <p>Prise en main de l'environnement Packet Tracer · Simulation réseau</p>
+                      <span class="cisco-cert-id">ID : be20510d</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ── Slide 4 : Cert Introduction PT ── -->
+                <div class="cisco-carousel__slide">
+                  <div class="cisco-carousel__slide-inner">
+                    <div class="cisco-cert-wrap">
+                      <img src="assets/certs/cert-introduction-1.png" alt="Introduction to Packet Tracer" class="cisco-cert-img" loading="lazy" />
+                      <span class="cisco-cert-shine"></span>
+                    </div>
+                    <div class="cisco-cert-info">
+                      <span class="cert-status cert-status--done">Réussi · 11 juin 2026</span>
+                      <h4>Introduction to Packet Tracer</h4>
+                      <p>Examen de validation · Concepts fondamentaux de simulation réseau</p>
+                      <span class="cisco-cert-id">ID : cb7a512c</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ── Slide 5 : Cert Exploration ── -->
+                <div class="cisco-carousel__slide">
+                  <div class="cisco-carousel__slide-inner">
+                    <div class="cisco-cert-wrap">
+                      <img src="assets/certs/cert-exploration-1.png" alt="Exploration des Réseaux" class="cisco-cert-img" loading="lazy" />
+                      <span class="cisco-cert-shine"></span>
+                    </div>
+                    <div class="cisco-cert-info">
+                      <span class="cert-status cert-status--done">Réussi · 11 juin 2026</span>
+                      <h4>Exploration des Réseaux avec Packet Tracer</h4>
+                      <p>Topologies réseau, adressage IP, protocoles de routage</p>
+                      <span class="cisco-cert-id">ID : 73acb964</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ── Slide 6 : Cert IoT ── -->
+                <div class="cisco-carousel__slide">
+                  <div class="cisco-carousel__slide-inner">
+                    <div class="cisco-cert-wrap">
+                      <img src="assets/certs/cert-iot-1.png" alt="Explorer l'IoT avec Cisco Packet Tracer" class="cisco-cert-img" loading="lazy" />
+                      <span class="cisco-cert-shine"></span>
+                    </div>
+                    <div class="cisco-cert-info">
+                      <span class="cert-status cert-status--done">Réussi · 11 juin 2026</span>
+                      <h4>Explorer l'IoT avec Cisco Packet Tracer</h4>
+                      <p>Modélisation de systèmes IoT · Capteurs, actionneurs &amp; automatisation</p>
+                      <span class="cisco-cert-id">ID : dedf838b</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ── Slide 7 : Cert IT Support ── -->
+                <div class="cisco-carousel__slide">
+                  <div class="cisco-carousel__slide-inner">
+                    <div class="cisco-cert-wrap">
+                      <img src="assets/certs/cert-itsupport-1.png" alt="IT Customer Support Basics" class="cisco-cert-img" loading="lazy" />
+                      <span class="cisco-cert-shine"></span>
+                    </div>
+                    <div class="cisco-cert-info">
+                      <span class="cert-status cert-status--done">Réussi · 12 juin 2026</span>
+                      <h4>IT Customer Support Basics</h4>
+                      <p>Help desk, service client &amp; dépannage à distance</p>
+                      <span class="cisco-cert-id">ID : 66784afb</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div><!-- /.cisco-carousel__track -->
+            </div><!-- /.cisco-carousel__track-wrap -->
+
+            <button class="cisco-carousel__btn cisco-carousel__btn--next" id="carouselNext" aria-label="Suivant">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div><!-- /.cisco-carousel -->
+
+          <!-- Indicateurs de position -->
+          <div class="cisco-carousel__dots" id="carouselDots"></div>
+
+        </div><!-- /.certs-category Certifications -->
 
         <!-- ════════════════════════════════════
-             CATÉGORIE 3 — CISCO (Badges Credly)
+             CATÉGORIE 3 — BADGES (Carrousel)
         ═══════════════════════════════════════ -->
         <div class="certs-category" data-animate>
           <h3 class="certs-category__title">
-            <span class="certs-category__icon certs-category__icon--orange"><i class="fa-solid fa-medal"></i></span>
-            Badges Cisco
+            <span class="certs-category__icon certs-category__icon--cisco"><i class="fa-solid fa-medal"></i></span>
+            Badges
           </h3>
-          <div class="certs-badges-row">
 
-            <div class="cert-badge-item">
-              <div class="cert-badge-wrap">
-                <img
-                  src="https://images.credly.com/size/340x340/images/474a03c6-b5e1-44df-b313-adf0fed6c531/blob"
-                  alt="IT Customer Support Basics – Cisco"
-                  class="cert-badge-img"
-                  width="340" height="340" loading="lazy"
-                />
-              </div>
-              <div class="cert-badge-info">
-                <span class="cert-status cert-status--done">Délivré le 12 juin 2026 · Cisco</span>
-                <h3>IT Customer Support Basics</h3>
-                <p>Help desk, service client &amp; dépannage à distance · Badge vérifié</p>
-              </div>
-            </div>
+          <!-- Carrousel Badges -->
+          <div class="cisco-carousel" id="badgeCarousel">
+            <button class="cisco-carousel__btn cisco-carousel__btn--prev" id="badgeCarouselPrev" aria-label="Précédent">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
 
-            <div class="cert-badge-item">
-              <div class="cert-badge-wrap">
-                <img
-                  src="https://images.credly.com/size/340x340/images/09b6d58c-763a-4b40-aea1-787d8f46bbcd/Intro2PT.png"
-                  alt="Introduction to Packet Tracer – Cisco"
-                  class="cert-badge-img"
-                  width="340" height="340" loading="lazy"
-                />
-              </div>
-              <div class="cert-badge-info">
-                <span class="cert-status cert-status--done">Délivré le 11 juin 2026 · Cisco</span>
-                <h3>Introduction to Packet Tracer</h3>
-                <p>Modélisation de réseaux IP &amp; systèmes IoT avec Cisco Packet Tracer · Badge vérifié</p>
-              </div>
-            </div>
+            <div class="cisco-carousel__track-wrap">
+              <div class="cisco-carousel__track" id="badgeCarouselTrack">
 
-          </div>
-        </div>
+                <!-- ── Slide 1 : Badge IT Support ── -->
+                <div class="cisco-carousel__slide">
+                  <div class="cisco-carousel__slide-inner">
+                    <div class="cert-badge-wrap">
+                      <img
+                        src="https://images.credly.com/size/340x340/images/474a03c6-b5e1-44df-b313-adf0fed6c531/blob"
+                        alt="IT Customer Support Basics – Cisco"
+                        class="cert-badge-img"
+                        width="340" height="340" loading="lazy"
+                      />
+                    </div>
+                    <div class="cert-badge-info">
+                      <span class="cert-status cert-status--done">Délivré le 12 juin 2026 · Cisco</span>
+                      <h3>IT Customer Support Basics</h3>
+                      <p>Help desk, service client &amp; dépannage à distance · Badge vérifié</p>
+                    </div>
+                  </div>
+                </div>
 
-        <!-- ════════════════════════════════════
-             CATÉGORIE 4 — COURS CISCO (Certificats PDF 3D)
-        ═══════════════════════════════════════ -->
-        <div class="certs-category" data-animate>
-          <h3 class="certs-category__title">
-            <span class="certs-category__icon certs-category__icon--cisco"><i class="fa-solid fa-network-wired"></i></span>
-            Cours Cisco Networking Academy
-          </h3>
-          <div class="cisco-certs-grid">
+                <!-- ── Slide 2 : Badge Intro PT ── -->
+                <div class="cisco-carousel__slide">
+                  <div class="cisco-carousel__slide-inner">
+                    <div class="cert-badge-wrap">
+                      <img
+                        src="https://images.credly.com/size/340x340/images/09b6d58c-763a-4b40-aea1-787d8f46bbcd/Intro2PT.png"
+                        alt="Introduction to Packet Tracer – Cisco"
+                        class="cert-badge-img"
+                        width="340" height="340" loading="lazy"
+                      />
+                    </div>
+                    <div class="cert-badge-info">
+                      <span class="cert-status cert-status--done">Délivré le 11 juin 2026 · Cisco</span>
+                      <h3>Introduction to Packet Tracer</h3>
+                      <p>Modélisation de réseaux IP &amp; systèmes IoT avec Cisco Packet Tracer · Badge vérifié</p>
+                    </div>
+                  </div>
+                </div>
 
-            <!-- Cert 1 -->
-            <div class="cisco-cert-3d">
-              <div class="cisco-cert-wrap">
-                <img src="assets/certs/cert-premiers-pas-1.png" alt="Premiers pas avec Cisco Packet Tracer" class="cisco-cert-img" loading="lazy" />
-                <span class="cisco-cert-shine"></span>
-              </div>
-              <div class="cisco-cert-info">
-                <span class="cert-status cert-status--done">Réussi · 11 juin 2026</span>
-                <h4>Premiers pas avec Cisco Packet Tracer</h4>
-                <p>Prise en main de l'environnement Packet Tracer · Simulation réseau</p>
-                <span class="cisco-cert-id">ID : be20510d</span>
-              </div>
-            </div>
+              </div><!-- /.cisco-carousel__track -->
+            </div><!-- /.cisco-carousel__track-wrap -->
 
-            <!-- Cert 2 -->
-            <div class="cisco-cert-3d">
-              <div class="cisco-cert-wrap">
-                <img src="assets/certs/cert-introduction-1.png" alt="Introduction to Packet Tracer" class="cisco-cert-img" loading="lazy" />
-                <span class="cisco-cert-shine"></span>
-              </div>
-              <div class="cisco-cert-info">
-                <span class="cert-status cert-status--done">Réussi · 11 juin 2026</span>
-                <h4>Introduction to Packet Tracer</h4>
-                <p>Examen de validation · Concepts fondamentaux de simulation réseau</p>
-                <span class="cisco-cert-id">ID : cb7a512c</span>
-              </div>
-            </div>
+            <button class="cisco-carousel__btn cisco-carousel__btn--next" id="badgeCarouselNext" aria-label="Suivant">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div><!-- /.cisco-carousel -->
 
-            <!-- Cert 3 -->
-            <div class="cisco-cert-3d">
-              <div class="cisco-cert-wrap">
-                <img src="assets/certs/cert-exploration-1.png" alt="Exploration des Réseaux" class="cisco-cert-img" loading="lazy" />
-                <span class="cisco-cert-shine"></span>
-              </div>
-              <div class="cisco-cert-info">
-                <span class="cert-status cert-status--done">Réussi · 11 juin 2026</span>
-                <h4>Exploration des Réseaux avec Packet Tracer</h4>
-                <p>Topologies réseau, adressage IP, protocoles de routage</p>
-                <span class="cisco-cert-id">ID : 73acb964</span>
-              </div>
-            </div>
+          <!-- Indicateurs de position -->
+          <div class="cisco-carousel__dots" id="badgeCarouselDots"></div>
 
-            <!-- Cert 4 -->
-            <div class="cisco-cert-3d">
-              <div class="cisco-cert-wrap">
-                <img src="assets/certs/cert-iot-1.png" alt="Explorer l'IoT avec Cisco Packet Tracer" class="cisco-cert-img" loading="lazy" />
-                <span class="cisco-cert-shine"></span>
-              </div>
-              <div class="cisco-cert-info">
-                <span class="cert-status cert-status--done">Réussi · 11 juin 2026</span>
-                <h4>Explorer l'IoT avec Cisco Packet Tracer</h4>
-                <p>Modélisation de systèmes IoT · Capteurs, actionneurs &amp; automatisation</p>
-                <span class="cisco-cert-id">ID : dedf838b</span>
-              </div>
-            </div>
-
-            <!-- Cert 5 -->
-            <div class="cisco-cert-3d">
-              <div class="cisco-cert-wrap">
-                <img src="assets/certs/cert-itsupport-1.png" alt="IT Customer Support Basics" class="cisco-cert-img" loading="lazy" />
-                <span class="cisco-cert-shine"></span>
-              </div>
-              <div class="cisco-cert-info">
-                <span class="cert-status cert-status--done">Réussi · 12 juin 2026</span>
-                <h4>IT Customer Support Basics</h4>
-                <p>Help desk, service client &amp; dépannage à distance</p>
-                <span class="cisco-cert-id">ID : 66784afb</span>
-              </div>
-            </div>
-
-          </div>
         </div>
 
         <!-- Liens Credly / LinkedIn -->
