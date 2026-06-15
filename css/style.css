@@ -1057,6 +1057,157 @@ section { padding: 5rem 0; }
 /* ── Cisco Networking Academy (legacy icon class) ── */
 .certs-group__icon--cisco { background: rgba(0,114,197,.12); color: #0072c5; }
 
+/* ── Slides icônes (PIX, Hack) sans image ── */
+.cisco-cert-wrap--icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 160px;
+}
+.cisco-cert-icon-badge {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  transition: transform .38s cubic-bezier(.23,1,.32,1), box-shadow .38s ease;
+  position: relative;
+  z-index: 1;
+}
+.cisco-cert-icon-badge--red {
+  background: radial-gradient(135deg, rgba(220,53,69,.18) 0%, rgba(220,53,69,.05) 100%);
+  color: #dc3545;
+  box-shadow: 0 4px 24px rgba(220,53,69,.25), 0 0 0 2px rgba(220,53,69,.15);
+}
+.cisco-cert-icon-badge--yellow {
+  background: radial-gradient(135deg, rgba(255,193,7,.2) 0%, rgba(255,193,7,.06) 100%);
+  color: #ffc107;
+  box-shadow: 0 4px 24px rgba(255,193,7,.3), 0 0 0 2px rgba(255,193,7,.18);
+}
+.cisco-cert-wrap--icon:hover .cisco-cert-icon-badge {
+  transform: scale(1.1) rotateY(-12deg) rotateX(6deg);
+}
+.cisco-cert-wrap--icon:hover .cisco-cert-icon-badge--red {
+  box-shadow: -6px 8px 28px rgba(220,53,69,.4), 0 0 0 2.5px rgba(220,53,69,.4);
+}
+.cisco-cert-wrap--icon:hover .cisco-cert-icon-badge--yellow {
+  box-shadow: -6px 8px 28px rgba(255,193,7,.5), 0 0 0 2.5px rgba(255,193,7,.4);
+}
+
+/* ════════════════════════════════════════════════
+   CARROUSEL CISCO CERTIFICATIONS
+════════════════════════════════════════════════ */
+/* .certs-category__grid + .cisco-carousel removed — grille supprimée, carrousel seul */
+
+.cisco-carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.cisco-carousel__track-wrap {
+  flex: 1;
+  overflow: hidden;
+  border-radius: var(--r-lg);
+}
+
+.cisco-carousel__track {
+  display: flex;
+  gap: 1.25rem;
+  transition: transform .45s cubic-bezier(.23,1,.32,1);
+  will-change: transform;
+}
+
+/* Chaque slide occupe exactement 1/3 de la zone visible (desktop) */
+.cisco-carousel__slide {
+  flex: 0 0 calc((100% - 2 * 1.25rem) / 3);
+  min-width: 0;
+}
+
+.cisco-carousel__slide-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .9rem;
+  text-align: center;
+  padding: 1.25rem 1rem 1.5rem;
+  border-radius: var(--r-lg);
+  border: 1.5px solid var(--border);
+  background: var(--surface-2);
+  height: 100%;
+  transition: border-color var(--t), box-shadow var(--t);
+}
+.cisco-carousel__slide-inner:hover {
+  border-color: rgba(0,114,197,.4);
+  box-shadow: 0 6px 24px rgba(0,0,0,.1);
+}
+
+/* Boutons prev / next */
+.cisco-carousel__btn {
+  flex-shrink: 0;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text-2);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  font-size: .85rem;
+  transition: all var(--t);
+  z-index: 2;
+}
+.cisco-carousel__btn:hover:not(:disabled) {
+  border-color: #0072c5;
+  color: #0072c5;
+  background: rgba(0,114,197,.08);
+}
+.cisco-carousel__btn:disabled {
+  opacity: .3;
+  cursor: default;
+}
+
+/* Indicateurs (dots) */
+.cisco-carousel__dots {
+  display: flex;
+  justify-content: center;
+  gap: .45rem;
+  margin-top: 1rem;
+}
+.cisco-carousel__dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--border);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background var(--t), transform var(--t);
+}
+.cisco-carousel__dot--active {
+  background: #0072c5;
+  transform: scale(1.3);
+}
+
+/* Responsive : 2 slides sur tablette */
+@media (max-width: 900px) {
+  .cisco-carousel__slide {
+    flex: 0 0 calc((100% - 1.25rem) / 2);
+  }
+}
+
+/* Responsive : 1 slide sur mobile */
+@media (max-width: 560px) {
+  .cisco-carousel__slide {
+    flex: 0 0 100%;
+  }
+  .cisco-carousel__btn {
+    width: 32px; height: 32px;
+    font-size: .75rem;
+  }
+}
+
 .cisco-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1325,11 +1476,11 @@ footer {
 /* ─── 15. ASSISTANT GIF ──────────────────────────────── */
 .assistant {
   position: fixed;
-  bottom: 0;
+  bottom: -18px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 95;
-  width: 110px;
+  width: 72px;
   background: none;
   border: none;
   padding: 0;
@@ -1366,7 +1517,7 @@ footer {
 /* ─── 16. BULLE DE DIALOGUE ──────────────────────────── */
 .speech-bubble {
   position: fixed;
-  bottom: 130px;
+  bottom: 80px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 96;
@@ -1548,8 +1699,8 @@ footer {
   .contact__cta { padding: 1.25rem; }
 
   /* Assistant encore plus petit */
-  .assistant { width: 62px; }
-  .speech-bubble { max-width: 200px; bottom: 85px; font-size: .78rem; }
+  .assistant { width: 50px; bottom: -14px; }
+  .speech-bubble { max-width: 200px; bottom: 70px; font-size: .78rem; }
 
   /* Navbar logo tronqué */
   .nav__logo { font-size: 1rem; }

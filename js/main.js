@@ -563,3 +563,178 @@
     });
   });
 })();
+
+/* ═══════════════════════════════════════════════════════════
+   CARROUSEL CERTIFICATIONS CISCO
+═══════════════════════════════════════════════════════════ */
+(function () {
+  const track   = document.getElementById('carouselTrack');
+  const btnPrev = document.getElementById('carouselPrev');
+  const btnNext = document.getElementById('carouselNext');
+  const dotsEl  = document.getElementById('carouselDots');
+  if (!track) return;
+
+  const slides    = Array.from(track.querySelectorAll('.cisco-carousel__slide'));
+  const total     = slides.length;
+  let   current   = 0;
+
+  /* Nombre de slides visibles selon la largeur */
+  function visibleCount() {
+    const w = window.innerWidth;
+    if (w <= 560) return 1;
+    if (w <= 900) return 2;
+    return 3;
+  }
+
+  /* Largeur d'un slide + gap (en px) */
+  function slideWidth() {
+    const gap  = 20; // 1.25rem ≈ 20px
+    const wrapW = track.parentElement.offsetWidth;
+    const vis   = visibleCount();
+    return (wrapW - gap * (vis - 1)) / vis + gap;
+  }
+
+  /* Crée les dots */
+  function buildDots() {
+    dotsEl.innerHTML = '';
+    const pages = total - visibleCount() + 1;
+    for (let i = 0; i < pages; i++) {
+      const btn = document.createElement('button');
+      btn.className = 'cisco-carousel__dot' + (i === current ? ' cisco-carousel__dot--active' : '');
+      btn.setAttribute('aria-label', `Slide ${i + 1}`);
+      btn.addEventListener('click', () => goTo(i));
+      dotsEl.appendChild(btn);
+    }
+  }
+
+  function updateDots() {
+    dotsEl.querySelectorAll('.cisco-carousel__dot').forEach((d, i) => {
+      d.classList.toggle('cisco-carousel__dot--active', i === current);
+    });
+  }
+
+  function updateBtns() {
+    btnPrev.disabled = current === 0;
+    btnNext.disabled = current >= total - visibleCount();
+  }
+
+  function goTo(idx) {
+    const maxIdx = Math.max(0, total - visibleCount());
+    current = Math.min(Math.max(idx, 0), maxIdx);
+    track.style.transform = `translateX(-${current * slideWidth()}px)`;
+    updateDots();
+    updateBtns();
+  }
+
+  btnPrev.addEventListener('click', () => goTo(current - 1));
+  btnNext.addEventListener('click', () => goTo(current + 1));
+
+  /* Swipe tactile */
+  let touchStartX = 0;
+  track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1));
+  });
+
+  /* Recalcul au resize */
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      const maxIdx = Math.max(0, total - visibleCount());
+      if (current > maxIdx) current = maxIdx;
+      buildDots();
+      goTo(current);
+    }, 120);
+  });
+
+  /* Init */
+  buildDots();
+  updateBtns();
+})();
+
+/* ═══════════════════════════════════════════════════════════
+   CARROUSEL BADGES
+═══════════════════════════════════════════════════════════ */
+(function () {
+  const track   = document.getElementById('badgeCarouselTrack');
+  const btnPrev = document.getElementById('badgeCarouselPrev');
+  const btnNext = document.getElementById('badgeCarouselNext');
+  const dotsEl  = document.getElementById('badgeCarouselDots');
+  if (!track) return;
+
+  const slides    = Array.from(track.querySelectorAll('.cisco-carousel__slide'));
+  const total     = slides.length;
+  let   current   = 0;
+
+  function visibleCount() {
+    const w = window.innerWidth;
+    if (w <= 560) return 1;
+    if (w <= 900) return 2;
+    return 3;
+  }
+
+  function slideWidth() {
+    const gap  = 20;
+    const wrapW = track.parentElement.offsetWidth;
+    const vis   = visibleCount();
+    return (wrapW - gap * (vis - 1)) / vis + gap;
+  }
+
+  function buildDots() {
+    dotsEl.innerHTML = '';
+    const pages = Math.max(1, total - visibleCount() + 1);
+    for (let i = 0; i < pages; i++) {
+      const btn = document.createElement('button');
+      btn.className = 'cisco-carousel__dot' + (i === current ? ' cisco-carousel__dot--active' : '');
+      btn.setAttribute('aria-label', `Badge ${i + 1}`);
+      btn.addEventListener('click', () => goTo(i));
+      dotsEl.appendChild(btn);
+    }
+  }
+
+  function updateDots() {
+    dotsEl.querySelectorAll('.cisco-carousel__dot').forEach((d, i) => {
+      d.classList.toggle('cisco-carousel__dot--active', i === current);
+    });
+  }
+
+  function updateBtns() {
+    btnPrev.disabled = current === 0;
+    btnNext.disabled = current >= total - visibleCount();
+  }
+
+  function goTo(idx) {
+    const maxIdx = Math.max(0, total - visibleCount());
+    current = Math.min(Math.max(idx, 0), maxIdx);
+    track.style.transform = `translateX(-${current * slideWidth()}px)`;
+    updateDots();
+    updateBtns();
+  }
+
+  btnPrev.addEventListener('click', () => goTo(current - 1));
+  btnNext.addEventListener('click', () => goTo(current + 1));
+
+  let touchStartX = 0;
+  track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1));
+  });
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      const maxIdx = Math.max(0, total - visibleCount());
+      if (current > maxIdx) current = maxIdx;
+      buildDots();
+      goTo(current);
+    }, 120);
+  });
+
+  /* Init */
+  buildDots();
+  updateBtns();
+})();
