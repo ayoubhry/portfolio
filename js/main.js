@@ -567,7 +567,7 @@
 /* ═══════════════════════════════════════════════════════════
    CARROUSEL CERTIFICATIONS CISCO
 ═══════════════════════════════════════════════════════════ */
-(function () {
+function initCiscoCarousel() {
   const track   = document.getElementById('carouselTrack');
   const btnPrev = document.getElementById('carouselPrev');
   const btnNext = document.getElementById('carouselNext');
@@ -586,10 +586,10 @@
     return 3;
   }
 
-  /* Largeur d'un slide + gap (en px) */
+  /* Largeur d'un slide + gap (en px) — recalculé à chaque appel pour éviter offsetWidth=0 */
   function slideWidth() {
-    const gap  = 20; // 1.25rem ≈ 20px
-    const wrapW = track.parentElement.offsetWidth;
+    const gap   = 20; // 1.25rem ≈ 20px
+    const wrapW = track.parentElement.getBoundingClientRect().width || track.parentElement.offsetWidth;
     const vis   = visibleCount();
     return (wrapW - gap * (vis - 1)) / vis + gap;
   }
@@ -652,12 +652,13 @@
   /* Init */
   buildDots();
   updateBtns();
-})();
+  goTo(0); // force recalcul après layout complet
+}
 
 /* ═══════════════════════════════════════════════════════════
    CARROUSEL BADGES
 ═══════════════════════════════════════════════════════════ */
-(function () {
+function initBadgeCarousel() {
   const track   = document.getElementById('badgeCarouselTrack');
   const btnPrev = document.getElementById('badgeCarouselPrev');
   const btnNext = document.getElementById('badgeCarouselNext');
@@ -676,8 +677,8 @@
   }
 
   function slideWidth() {
-    const gap  = 20;
-    const wrapW = track.parentElement.offsetWidth;
+    const gap   = 20;
+    const wrapW = track.parentElement.getBoundingClientRect().width || track.parentElement.offsetWidth;
     const vis   = visibleCount();
     return (wrapW - gap * (vis - 1)) / vis + gap;
   }
@@ -737,4 +738,16 @@
   /* Init */
   buildDots();
   updateBtns();
-})();
+  goTo(0); // force recalcul après layout complet
+}
+
+/* Lance les deux carrousels une fois que tout le layout est prêt */
+if (document.readyState === 'complete') {
+  initCiscoCarousel();
+  initBadgeCarousel();
+} else {
+  window.addEventListener('load', () => {
+    initCiscoCarousel();
+    initBadgeCarousel();
+  });
+}
