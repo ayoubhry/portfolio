@@ -290,6 +290,48 @@
 
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  const toggleBtn = document.getElementById('socialSidebarToggle');
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      const collapsed = sidebar.classList.toggle('is-collapsed');
+      toggleBtn.setAttribute('aria-expanded', String(!collapsed));
+      toggleBtn.setAttribute('aria-label', collapsed ? 'Afficher les raccourcis' : 'Réduire les raccourcis');
+    });
+  }
+})();
+
+
+/* ─────────────────────────────────────────────────────────────
+   10bis. MODAL DÉTAIL — Expérience professionnelle
+───────────────────────────────────────────────────────────── */
+(function initExpModal() {
+  const openBtn   = document.getElementById('expOpenBtn');
+  const modal     = document.getElementById('expModal');
+  const closeBtn  = document.getElementById('expModalClose');
+  const backdrop  = document.getElementById('expModalBackdrop');
+  if (!openBtn || !modal || !closeBtn || !backdrop) return;
+
+  function openModal() {
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    closeBtn.focus();
+  }
+
+  function closeModal() {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    openBtn.focus();
+  }
+
+  openBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+  });
 })();
 
 

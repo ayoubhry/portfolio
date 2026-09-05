@@ -29,8 +29,9 @@
       <a href="#hero" class="nav__logo">Ayoub HOURAOUI<span>.</span></a>
 
       <ul class="nav__links" id="navLinks">
-        <li><a href="#about"          class="nav__link">À propos</a></li>
         <li><a href="#stack"          class="nav__link">Stack</a></li>
+        <li><a href="#about"          class="nav__link">À propos</a></li>
+        <li><a href="#experience"     class="nav__link">Expérience</a></li>
         <li><a href="#projects"       class="nav__link">Projets</a></li>
         <li><a href="#certifications" class="nav__link">Certifications</a></li>
         <li><a href="#contact"        class="nav__link">Contact</a></li>
@@ -73,16 +74,21 @@
 
   <!-- ── SIDEBAR FLOTTANTE ───────────────────────────── -->
   <aside class="social-sidebar" id="socialSidebar" aria-label="Liens sociaux">
-    <a href="mailto:ayoub.houraoui.contact@gmail.com" class="social-sidebar__link" data-tooltip="Envoyer un email">
-      <i class="fa-solid fa-envelope"></i>
+    <a href="mailto:ayoub.houraoui.contact@gmail.com" class="social-sidebar__item">
+      <span class="social-sidebar__icon"><i class="fa-solid fa-envelope"></i></span>
+      <span class="social-sidebar__label">Email</span>
     </a>
-    <a href="https://fr.linkedin.com/in/ayoub-houraoui" target="_blank" rel="noopener" class="social-sidebar__link" data-tooltip="LinkedIn">
-      <i class="fa-brands fa-linkedin"></i>
+    <a href="https://fr.linkedin.com/in/ayoub-houraoui" target="_blank" rel="noopener" class="social-sidebar__item">
+      <span class="social-sidebar__icon"><i class="fa-brands fa-linkedin"></i></span>
+      <span class="social-sidebar__label">LinkedIn</span>
     </a>
-    <a href="https://github.com/ayoubhry/portfolio" target="_blank" rel="noopener" class="social-sidebar__link" data-tooltip="GitHub">
-      <i class="fa-brands fa-github"></i>
+    <a href="https://github.com/ayoubhry/portfolio" target="_blank" rel="noopener" class="social-sidebar__item">
+      <span class="social-sidebar__icon"><i class="fa-brands fa-github"></i></span>
+      <span class="social-sidebar__label">GitHub</span>
     </a>
-    <div class="social-sidebar__line"></div>
+    <button class="social-sidebar__toggle" id="socialSidebarToggle" aria-label="Réduire les raccourcis" aria-expanded="true">
+      <i class="fa-solid fa-chevron-up"></i>
+    </button>
   </aside>
 
   <main>
@@ -95,7 +101,7 @@
         <div class="hero__content" data-animate>
           <div class="hero__badge">
             <span class="hero__badge-dot"></span>
-            Recherche de stage · SISR
+            Étudiant en 2e année de BTS SIO – option SISR
           </div>
           <h1 class="hero__title">
             Infrastructure,<br />
@@ -103,8 +109,13 @@
             Cybersécurité.
           </h1>
           <p class="hero__desc">
-            Étudiant en <strong>BTS SIO option SISR</strong> au lycée Jean Rostand à Caen.
-            Passionné par les systèmes, les réseaux et la sécurité informatique.
+            <strong>Systèmes · Réseaux · Infrastructure · Cybersécurité</strong><br />
+            Formé au lycée Jean Rostand à Caen, passionné par l'administration
+            système, les réseaux et la sécurité informatique.
+          </p>
+          <p class="hero__stage-note">
+            <i class="fa-solid fa-calendar-days"></i>
+            Recherche d'un stage de 7 semaines, du 4 janvier au 19 février 2027
           </p>
           <div class="hero__cta">
             <a href="#projects" class="btn btn--primary btn--lg">
@@ -290,6 +301,148 @@
       </div>
     </section>
 
+    <!-- ── EXPÉRIENCE PROFESSIONNELLE ───────────────────── -->
+    <section id="experience">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <p class="section-label">Expérience professionnelle</p>
+          <h2 class="section-title">Mon stage à la Mairie d'Hérouville-Saint-Clair</h2>
+          <p class="section-desc">Un aperçu — clique sur la carte pour voir le détail complet.</p>
+        </div>
+
+        <!-- Carte aperçu, cliquable → ouvre le modal -->
+        <button class="project-card exp-preview" id="expOpenBtn" data-animate aria-haspopup="dialog" aria-controls="expModal">
+          <div class="project-card__top">
+            <div class="project-card__icon project-card__icon--blue">
+              <i class="fa-solid fa-building-columns"></i>
+            </div>
+            <span class="project-tag">Stage 2026</span>
+          </div>
+          <h3 class="project-card__title">Direction des Systèmes d'Information</h3>
+          <p class="project-card__org">Mairie d'Hérouville-Saint-Clair</p>
+          <p class="project-card__desc">Administration du parc informatique, support aux utilisateurs, gestion de l'infrastructure réseau et des serveurs de la collectivité territoriale.</p>
+          <div class="project-card__tags">
+            <span class="tag-clickable">GLPI</span><span class="tag-clickable">Parc informatique</span><span class="tag-clickable">Support N1/N2</span><span class="tag-clickable">Infrastructure</span>
+          </div>
+          <span class="exp-preview__cta"><i class="fa-solid fa-arrow-up-right-and-arrow-down-left-from-center"></i> Voir le détail complet</span>
+        </button>
+
+        <!-- OBJECTIFS 2E ANNÉE -->
+        <div class="exp-goals" data-animate>
+          <div class="exp-goals__icon"><i class="fa-solid fa-bullseye"></i></div>
+          <div>
+            <h3>Objectifs pour mon stage de 2ᵉ année</h3>
+            <p>
+              Approfondir l'administration systèmes et réseaux, gagner en autonomie,
+              participer à des projets techniques et développer mes compétences en
+              sécurité informatique.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── EXPÉRIENCE — MODAL DÉTAIL ────────────────────── -->
+    <div id="expModal" class="exp-modal" role="dialog" aria-modal="true" aria-labelledby="expModalTitle" aria-hidden="true">
+      <div class="exp-modal__backdrop" id="expModalBackdrop"></div>
+      <div class="exp-modal__panel">
+        <button class="exp-modal__close" id="expModalClose" aria-label="Fermer">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="exp-modal__scroll">
+        <div class="exp-card">
+
+          <div class="exp-card__header">
+            <div class="exp-card__icon"><i class="fa-solid fa-building-columns"></i></div>
+            <div class="exp-card__heading">
+              <h3 id="expModalTitle">Stagiaire – Direction des Systèmes d'Information</h3>
+              <p class="exp-card__meta">
+                <span><i class="fa-solid fa-location-dot"></i> Mairie d'Hérouville-Saint-Clair</span>
+                <span><i class="fa-solid fa-calendar"></i> Stage 2026 · BTS SIO 1ʳᵉ année</span>
+              </p>
+            </div>
+          </div>
+
+          <!-- CONTEXTE -->
+          <div class="exp-block">
+            <h4><i class="fa-solid fa-circle-info"></i> Contexte</h4>
+            <p>
+              <!-- TODO Ayoub : à reformuler avec tes mots si besoin -->
+              La Direction des Systèmes d'Information (DSI) de la mairie d'Hérouville-Saint-Clair
+              gère le parc informatique, le réseau et les outils numériques utilisés par
+              l'ensemble des services de la collectivité territoriale (agents municipaux,
+              écoles, services administratifs...). C'est dans ce service que j'ai effectué
+              mon stage de 1ʳᵉ année de BTS SIO.
+            </p>
+          </div>
+
+          <!-- MISSIONS -->
+          <div class="exp-block">
+            <h4><i class="fa-solid fa-list-check"></i> Missions</h4>
+            <!-- TODO Ayoub : remplace/complète les [ ] par tes missions réelles -->
+            <ul class="exp-list">
+              <li><strong>Support aux utilisateurs</strong> — [précise : type de demandes, niveau 1/2, en présentiel ou à distance...]</li>
+              <li><strong>Gestion du parc informatique</strong> — [précise : inventaire GLPI, suivi de tickets, remplacement/installation de matériel...]</li>
+              <li><strong>Administration de l'infrastructure réseau et des serveurs</strong> — [précise : quels serveurs, quel réseau, quelles tâches concrètes...]</li>
+            </ul>
+          </div>
+
+          <!-- OUTILS UTILISÉS -->
+          <div class="exp-block">
+            <h4><i class="fa-solid fa-toolbox"></i> Outils utilisés</h4>
+            <!-- TODO Ayoub : garde uniquement ceux réellement utilisés PENDANT le stage -->
+            <div class="exp-tags">
+              <span class="exp-tag">GLPI</span>
+              <span class="exp-tag">Parc informatique</span>
+              <span class="exp-tag">Active Directory</span>
+              <span class="exp-tag">Windows Server</span>
+              <span class="exp-tag">Réseau (switch / routeur / VLAN)</span>
+              <span class="exp-tag">Support N1 / N2</span>
+            </div>
+          </div>
+
+          <!-- RÉALISATIONS CONCRÈTES -->
+          <div class="exp-block">
+            <h4><i class="fa-solid fa-star"></i> Ce que j'ai réalisé</h4>
+            <!-- TODO Ayoub : remplace ces exemples par tes vraies réalisations, si possible chiffrées -->
+            <ul class="exp-list">
+              <li>[Ex : « J'ai déployé/réinstallé X postes informatiques pour les services de la mairie »]</li>
+              <li>[Ex : « J'ai pris en charge le suivi de X tickets GLPI sur la durée du stage »]</li>
+              <li>[Ex : « J'ai participé à la mise en place / au dépannage de tel équipement réseau »]</li>
+            </ul>
+          </div>
+
+          <!-- COMPÉTENCES ACQUISES -->
+          <div class="exp-block">
+            <h4><i class="fa-solid fa-graduation-cap"></i> Compétences acquises pendant le stage</h4>
+            <!-- TODO Ayoub : garde uniquement celles réellement utilisées -->
+            <div class="exp-tags">
+              <span class="exp-tag exp-tag--accent">Administration systèmes</span>
+              <span class="exp-tag exp-tag--accent">Support utilisateurs</span>
+              <span class="exp-tag exp-tag--accent">Gestion de parc</span>
+              <span class="exp-tag exp-tag--accent">Réseau</span>
+              <span class="exp-tag exp-tag--accent">GLPI</span>
+              <span class="exp-tag exp-tag--accent">Sécurité</span>
+            </div>
+          </div>
+
+          <!-- BILAN -->
+          <div class="exp-block exp-block--bilan">
+            <h4><i class="fa-solid fa-quote-left"></i> Bilan</h4>
+            <p>
+              <!-- TODO Ayoub : 2-3 phrases perso sur ce que le stage t'a appris -->
+              [Quelques phrases sur ce que ce stage t'a apporté humainement et techniquement,
+              et pourquoi tu souhaites revenir dans cette même DSI pour ta 2ᵉ année.]
+            </p>
+          </div>
+
+        </div>
+        </div>
+      </div>
+    </div>
+
     <!-- ── PROJETS ──────────────────────────────────────── -->
     <section id="projects">
       <div class="container">
@@ -301,22 +454,7 @@
 
         <div class="projects__grid">
 
-          <article class="project-card project-card--wide" data-animate>
-            <div class="project-card__top">
-              <div class="project-card__icon project-card__icon--blue">
-                <i class="fa-solid fa-building-columns"></i>
-              </div>
-              <span class="project-tag">Stage 2026</span>
-            </div>
-            <h3 class="project-card__title">Direction des Systèmes Informatiques</h3>
-            <p class="project-card__org">Mairie d'Hérouville-Saint-Clair</p>
-            <p class="project-card__desc">Administration du parc informatique, support aux utilisateurs, gestion de l'infrastructure réseau et des serveurs de la collectivité territoriale.</p>
-            <div class="project-card__tags">
-              <span class="tag-clickable" data-tag="GLPI">GLPI</span><span class="tag-clickable" data-tag="Parc informatique">Parc informatique</span><span class="tag-clickable" data-tag="Support N1/N2">Support N1/N2</span><span class="tag-clickable" data-tag="Infrastructure">Infrastructure</span>
-            </div>
-          </article>
-
-          <article class="project-card" data-animate data-delay="80">
+          <article class="project-card" data-animate>
             <div class="project-card__top">
               <div class="project-card__icon project-card__icon--orange">
                 <i class="fa-solid fa-network-wired"></i>
