@@ -336,6 +336,54 @@
 
 
 /* ─────────────────────────────────────────────────────────────
+   10ter. TAGS CLIQUABLES — Redirection vers la documentation
+───────────────────────────────────────────────────────────── */
+(function initClickableTags() {
+  const DOCS_BASE_URL = 'https://ayoubhry.github.io/docs/';
+
+  // Transforme un libellé de tag en ancre lisible pour la doc (ex: "Docker & Portainer" → "docker-portainer")
+  function slugify(label) {
+    return label
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // enlève les accents
+      .toLowerCase()
+      .replace(/&/g, ' et ')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+  }
+
+  function goToDocs(tagEl) {
+    const label = tagEl.dataset.tag || tagEl.textContent.trim();
+    const slug = slugify(label);
+    window.open(`${DOCS_BASE_URL}#${slug}`, '_blank', 'noopener');
+  }
+
+  document.querySelectorAll('.tag-clickable').forEach((tagEl) => {
+    // Accessibilité : rendre le tag focusable et identifiable comme un lien
+    tagEl.setAttribute('role', 'link');
+    tagEl.setAttribute('tabindex', '0');
+    if (!tagEl.hasAttribute('aria-label')) {
+      tagEl.setAttribute('aria-label', `Voir la documentation : ${tagEl.dataset.tag || tagEl.textContent.trim()}`);
+    }
+
+    tagEl.addEventListener('click', (e) => {
+      // Empêche le clic de "remonter" vers une carte/bouton parent (ex: la pancarte d'expérience)
+      e.preventDefault();
+      e.stopPropagation();
+      goToDocs(tagEl);
+    });
+
+    tagEl.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        e.stopPropagation();
+        goToDocs(tagEl);
+      }
+    });
+  });
+})();
+
+
+/* ─────────────────────────────────────────────────────────────
    11. AUDIO BACKGROUND + ASSISTANT GIF
    ─────────────────────────────────────────────────────────────
    Structure assets requise :

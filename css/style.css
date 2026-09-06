@@ -730,6 +730,10 @@ section { padding: 5rem 0; }
 .tag-clickable:active {
   transform: translateY(0);
 }
+.tag-clickable:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
 
 /* ─── TAG MODAL ──────────────────────────────────── */
 .tag-modal {
